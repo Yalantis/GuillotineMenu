@@ -1,6 +1,6 @@
 
 # GuillotineMenu.swift
-![Preview]()
+![Preview](https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif)
 
 Guillotine Menu
 
