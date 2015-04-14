@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
-  spec.name = "GuillotineMenu”
+  spec.name = "GuillotineMenu"
   spec.version = "1.0.0"
 
   spec.homepage = "http://yalantis.com/blog/how-we-created-guillotine-menu-animation/"
-  spec.summary = “Custom menu transition from Navigation Bar”
+  spec.summary = "Custom menu transition from Navigation Bar"
 
   spec.author = "Yalantis"
   spec.license = { :type => "MIT", :file => "LICENSE" }
