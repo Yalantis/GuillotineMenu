@@ -8,6 +8,8 @@ Made in [Yalantis](http://yalantis.com/).
 
 Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-Topbar-Animation)
 
+Also, read how it was done in our [blog](http://yalantis.com/blog/how-we-created-guillotine-menu-animation/)
+
 ## Requirements
 iOS 8.0
 
