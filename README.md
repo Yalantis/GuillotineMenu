@@ -4,7 +4,7 @@
 
 Guillotine Menu
 
-Made in [Yalantis](http://yalantis.com/).
+Made in [![Yalantis](https://raw.githubusercontent.com/Yalantis/FoldingTabBar.iOS/master/Example/Example/Resources/Images/badge_orage_shadow.png)](http://yalantis.com/?utm_source=github)
 
 Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-Topbar-Animation)
 
