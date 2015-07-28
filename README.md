@@ -10,8 +10,13 @@ Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-T
 
 Also, read how it was done in our [blog](http://yalantis.com/blog/how-we-created-guillotine-menu-animation/)
 
+
 ## Requirements
-iOS 8.0
+iOS 8.0 Swift 1.2
+
+## Swift 2.0
+Currently we maintain a [branch](https://github.com/Yalantis/GuillotineMenu/tree/swift_2.0) to provide support for Swift 2.0.
+
 
 ## Installation
 
