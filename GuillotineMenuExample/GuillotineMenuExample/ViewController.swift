@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     let reuseIdentifier = "ContentCell"
     private let cellHeight: CGFloat = 210
     private let cellSpacing: CGFloat = 20
+    var destinationTitle: String!
 
     @IBOutlet var barButton: UIButton!
 
@@ -25,11 +26,19 @@ class ViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Your Menu View Controller vew must know the following data for the proper animatio
-        let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
-        destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
-        destinationVC.hostTitleText = self.navigationItem.title
-        destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
-        destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
+        
+        if segue.destinationViewController.isKindOfClass(GuillotineMenuViewController) {
+            let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
+            destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
+            destinationVC.hostTitleText = self.navigationItem.title
+            destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
+            destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
+            destinationVC.delegate = self
+        } else
+        {
+            let destinationVC = segue.destinationViewController as! UIViewController
+            destinationVC.title = destinationTitle
+        }
     }
 }
 
@@ -51,5 +60,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(CGRectGetWidth(collectionView.bounds) - cellSpacing, cellHeight)
     }
+}
 
+extension ViewController: GuillotineMenuViewControllerDelegate {
+    func menuOptionTapped(menuOption: String) {
+        self.destinationTitle = menuOption
+        self.performSegueWithIdentifier("menuOptionSegueID", sender: self)
+    }
 }

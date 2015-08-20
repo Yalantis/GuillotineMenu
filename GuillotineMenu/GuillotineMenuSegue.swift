@@ -24,10 +24,8 @@ class GuillotineMenuSegue: UIStoryboardSegue {
     override func perform() {
         let source = sourceViewController as! UIViewController
         let target = destinationViewController as! UIViewController
-        
-        target.modalPresentationStyle = .Custom
         target.transitioningDelegate = self
-        
+        target.modalPresentationStyle = .Custom
         source.presentViewController(target, animated: true, completion: nil)
     }
 }

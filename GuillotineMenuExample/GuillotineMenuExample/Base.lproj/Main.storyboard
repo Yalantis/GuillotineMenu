@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Activity-->
@@ -84,11 +84,31 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="ixD-Qa-kYA" id="XZq-mp-Aay"/>
+                        <segue destination="ClV-we-nYF" kind="show" identifier="menuOptionSegueID" id="aO8-uH-vLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="484"/>
+            <point key="canvasLocation" x="958" y="484"/>
+        </scene>
+        <!--Menu OptionVC-->
+        <scene sceneID="h2J-H9-zFV">
+            <objects>
+                <viewController id="ClV-we-nYF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fck-mz-5ZH"/>
+                        <viewControllerLayoutGuide type="bottom" id="uDY-Hx-IBH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="367-ze-80H">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menu OptionVC" id="WeX-Ag-bb7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cm-hs-7g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="1204"/>
         </scene>
         <!--Guillotine Menu View Controller-->
         <scene sceneID="ZlZ-2M-K3G">
@@ -107,6 +127,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0N-Sn-nKz">
                                         <rect key="frame" x="54" y="202" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FuH-Qu-DO6"/>
                                             <constraint firstAttribute="width" constant="200" id="Nd0-bY-aoZ"/>
@@ -117,9 +138,13 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="uab-oe-fe4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-jJ-Etz">
                                         <rect key="frame" x="50" y="8" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="PROFILE"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Tp-6J-c1Q"/>
                                             <constraint firstAttribute="width" constant="200" id="9B1-GD-Art"/>
@@ -130,9 +155,13 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="nKp-10-LX0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RO-8m-4aQ">
                                         <rect key="frame" x="50" y="56" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="FEED"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Onz-LD-2il"/>
                                             <constraint firstAttribute="height" constant="40" id="WfZ-Gz-0Fw"/>
@@ -143,9 +172,13 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="WIc-rg-Z65"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-iu-7LY">
                                         <rect key="frame" x="50" y="105" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Duw-Rk-efz"/>
                                             <constraint firstAttribute="height" constant="40" id="nCd-EY-9iu"/>
@@ -156,6 +189,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="Zh8-II-q6C"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol GuillotineMenuViewControllerDelegate: class {
+    func menuOptionTapped(menuOption: String)
+}
+
 class GuillotineMenuViewController: UIViewController {
 
     var hostNavigationBarHeight: CGFloat!
@@ -16,6 +20,7 @@ class GuillotineMenuViewController: UIViewController {
     var menuButton: UIButton!
     var menuButtonLeadingConstraint: NSLayoutConstraint!
     var menuButtonTopConstraint: NSLayoutConstraint!
+    weak var delegate: GuillotineMenuViewControllerDelegate?
     
     private let menuButtonLandscapeLeadingConstant: CGFloat = 1
     private let menuButtonPortraitLeadingConstant: CGFloat = 7
@@ -89,7 +94,13 @@ class GuillotineMenuViewController: UIViewController {
         }
         
     }
+    
+// MARK: IBAction
 
+    @IBAction func profileButtonTapped(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        delegate?.menuOptionTapped(sender.accessibilityLabel)
+    }
 }
 
 extension GuillotineMenuViewController: GuillotineAnimationProtocol {

@@ -120,7 +120,7 @@ class GuillotineTransitionAnimation: NSObject {
         
         itemBehaviour = UIDynamicItemBehavior(items: [view])
         itemBehaviour.elasticity = menuElasticity
-        itemBehaviour.resistance = 1
+        itemBehaviour.resistance = 0.5
         animator.addBehavior(self.itemBehaviour)
         itemBehaviour.addItem(view)
         
