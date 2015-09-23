@@ -4,11 +4,11 @@
 
 Guillotine Menu
 
-Made in [![Yalantis](https://raw.githubusercontent.com/Yalantis/FoldingTabBar.iOS/master/Example/Example/Resources/Images/badge_orage_shadow.png)](http://yalantis.com/?utm_source=github)
+Made in [![Yalantis](https://raw.githubusercontent.com/Yalantis/FoldingTabBar.iOS/master/Example/Example/Resources/Images/badge_orage_shadow.png)](https://yalantis.com/?utm_source=github)
 
 Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-Topbar-Animation)
 
-Also, read how it was done in our [blog](http://yalantis.com/blog/how-we-created-guillotine-menu-animation/)
+Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-created-guillotine-menu-animation/)
 
 
 ## Requirements
