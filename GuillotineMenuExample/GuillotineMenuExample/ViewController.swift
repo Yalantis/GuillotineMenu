@@ -33,8 +33,11 @@ class ViewController: UIViewController {
             destinationVC.hostTitleText = self.navigationItem.title
             destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
             destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
-            destinationVC.delegate = self
-            destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
+            
+            destinationVC.addChildViewController(menuVC)
         } else
         {
             let destinationVC = segue.destinationViewController 
@@ -60,12 +63,5 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(CGRectGetWidth(collectionView.bounds) - cellSpacing, cellHeight)
-    }
-}
-
-extension ViewController: GuillotineMenuViewControllerDelegate {
-    func menuOptionTapped(menuOption: String) {
-        self.destinationTitle = menuOption
-        self.performSegueWithIdentifier("menuOptionSegueID", sender: self)
     }
 }

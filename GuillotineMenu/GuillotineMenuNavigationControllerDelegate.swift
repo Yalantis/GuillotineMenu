@@ -18,9 +18,10 @@ class GuillotineMenuNavigationControllerDelegate: NSObject, UINavigationControll
             
             if toVC.isKindOfClass(GuillotineMenuViewController){
                 return GuillotineTransitionAnimation(GuillotineTransitionAnimation.Mode.Presentation)
-            } else {
+            } else if fromVC.isKindOfClass(GuillotineMenuViewController) {
                 return GuillotineTransitionAnimation(GuillotineTransitionAnimation.Mode.Dismissal)
             }
+            return nil
     }
     
 }

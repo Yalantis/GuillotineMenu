@@ -46,8 +46,14 @@ class GuillotineMenuViewController: UIViewController {
         }
     }
     
+    override func addChildViewController(childController: UIViewController) {
+        super.addChildViewController(childController);
+        childController.view.frame = view.bounds
+        self.view.insertSubview(childController.view, belowSubview: menuButton)
+    }
+    
 // MARK: Actions
-    func closeMenuButtonTapped() {
+    func closeMenu() {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -63,7 +69,7 @@ class GuillotineMenuViewController: UIViewController {
         menuButton.setImage(image, forState: .Normal)
         menuButton.setImage(image, forState: .Highlighted)
         menuButton.imageView!.contentMode = .Center
-        menuButton.addTarget(self, action: Selector("closeMenuButtonTapped"), forControlEvents: .TouchUpInside)
+        menuButton.addTarget(self, action: Selector("closeMenu"), forControlEvents: .TouchUpInside)
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         menuButton.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
         self.view.addSubview(menuButton)
@@ -78,13 +84,6 @@ class GuillotineMenuViewController: UIViewController {
             menuButtonTopConstraint = top
         }
         
-    }
-    
-// MARK: IBAction
-
-    @IBAction func profileButtonTapped(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
-        //delegate?.menuOptionTapped(sender.accessibilityLabel!)
     }
 }
 

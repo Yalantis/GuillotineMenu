@@ -78,7 +78,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fth-R5-ROZ" kind="show" id="4CI-Yc-Jg7"/>
+                                    <segue destination="VRZ-IH-5ac" kind="show" id="FQI-Vk-PEX"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -91,6 +91,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="484"/>
+        </scene>
+        <!--Guillotine Menu View Controller-->
+        <scene sceneID="yOn-jb-noV">
+            <objects>
+                <viewController id="VRZ-IH-5ac" customClass="GuillotineMenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4nK-Uy-yNt"/>
+                        <viewControllerLayoutGuide type="bottom" id="EAA-bW-ke1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EFf-hi-4AD">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJ0-9z-YXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1645" y="484"/>
         </scene>
         <!--Menu OptionVC-->
         <scene sceneID="h2J-H9-zFV">
@@ -111,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="958" y="1204"/>
         </scene>
-        <!--Guillotine Menu View Controller-->
+        <!--View Controller-->
         <scene sceneID="ZlZ-2M-K3G">
             <objects>
-                <viewController modalPresentationStyle="currentContext" id="fth-R5-ROZ" customClass="GuillotineMenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyMenuVC" modalPresentationStyle="currentContext" id="fth-R5-ROZ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSI-dx-N1K"/>
                         <viewControllerLayoutGuide type="bottom" id="z09-MX-auK"/>
@@ -139,9 +157,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="uab-oe-fe4"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-jJ-Etz">
                                         <rect key="frame" x="50" y="8" width="200" height="40"/>
@@ -156,9 +171,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="nKp-10-LX0"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RO-8m-4aQ">
                                         <rect key="frame" x="50" y="56" width="200" height="40"/>
@@ -173,9 +185,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="WIc-rg-Z65"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-iu-7LY">
                                         <rect key="frame" x="50" y="105" width="200" height="40"/>
@@ -190,9 +199,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="profileButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="Zh8-II-q6C"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -223,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eey-Au-nRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="484"/>
+            <point key="canvasLocation" x="1660" y="1204"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrU-IG-XyS">
