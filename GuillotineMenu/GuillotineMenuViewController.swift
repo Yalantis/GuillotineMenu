@@ -31,19 +31,6 @@ class GuillotineMenuViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
@@ -61,13 +48,11 @@ class GuillotineMenuViewController: UIViewController {
     
 // MARK: Actions
     func closeMenuButtonTapped() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func setMenuButtonWithImage(image: UIImage) {
         let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-        let buttonImage = UIImage(CGImage: image.CGImage, scale: 1.0, orientation: .Right)
         
         if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
             menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
@@ -79,16 +64,16 @@ class GuillotineMenuViewController: UIViewController {
         menuButton.setImage(image, forState: .Highlighted)
         menuButton.imageView!.contentMode = .Center
         menuButton.addTarget(self, action: Selector("closeMenuButtonTapped"), forControlEvents: .TouchUpInside)
-        menuButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         menuButton.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
         self.view.addSubview(menuButton)
         
         if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-           var (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonLandscapeLeadingConstant, menuButtonPortraitLeadingConstant))
+           let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonLandscapeLeadingConstant, menuButtonPortraitLeadingConstant))
             menuButtonLeadingConstraint = leading
             menuButtonTopConstraint = top
         } else {
-            var (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight))
+            let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight))
             menuButtonLeadingConstraint = leading
             menuButtonTopConstraint = top
         }
@@ -98,8 +83,8 @@ class GuillotineMenuViewController: UIViewController {
 // MARK: IBAction
 
     @IBAction func profileButtonTapped(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        delegate?.menuOptionTapped(sender.accessibilityLabel)
+        self.navigationController?.popViewControllerAnimated(true)
+        //delegate?.menuOptionTapped(sender.accessibilityLabel!)
     }
 }
 

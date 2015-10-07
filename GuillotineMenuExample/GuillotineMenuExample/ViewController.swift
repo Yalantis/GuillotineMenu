@@ -34,9 +34,10 @@ class ViewController: UIViewController {
             destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
             destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
             destinationVC.delegate = self
+            destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
         } else
         {
-            let destinationVC = segue.destinationViewController as! UIViewController
+            let destinationVC = segue.destinationViewController 
             destinationVC.title = destinationTitle
         }
     }

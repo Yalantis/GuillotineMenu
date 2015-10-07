@@ -28,7 +28,7 @@ class GuillotineTransitionAnimation: NSObject {
     enum Mode { case Presentation, Dismissal }
     
     private let mode: Mode
-    private let duration = 0.6
+    private let duration = 0.5
     private let vectorDY: CGFloat = 1500
     private let vectorDx: CGFloat = 0.0
     private let initialMenuRotationAngle: CGFloat = -90
@@ -54,31 +54,34 @@ class GuillotineTransitionAnimation: NSObject {
     
     private func animatePresentation(context: UIViewControllerContextTransitioning) {
         menu = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        menu.navigationController?.setNavigationBarHidden(true, animated: false);
         if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
             animationDelegate.willStartPresentation?()
         }
         // Move view off screen to avoid blink at start
         menu.view.center = CGPointMake(0, CGRectGetHeight(menu.view.frame))
         menu.beginAppearanceTransition(true, animated: true)
-        context.containerView().addSubview(menu.view)
+        context.containerView()!.addSubview(menu.view)
         animateMenu(menu.view, context: context)
     }
     
     private func animateDismissal(context: UIViewControllerContextTransitioning) {
         menu = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         
+        let hostViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        
         if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
             animationDelegate.willStartDismissal?()
         }
         
-        let host = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         animator.delegate = self
+        context.containerView()!.insertSubview(hostViewController.view, belowSubview: menu.view)
         animateMenu(menu.view, context: context)
     }
     
     private func animateMenu(view: UIView, context:UIViewControllerContextTransitioning) {
         animationContext = context
-        animator = UIDynamicAnimator(referenceView: context.containerView())
+        animator = UIDynamicAnimator(referenceView: context.containerView()!)
         animator.delegate = self
         statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         if let menuProt = menu as? protocol<GuillotineAnimationProtocol> {
@@ -95,21 +98,21 @@ class GuillotineTransitionAnimation: NSObject {
             rotationDirection = CGVectorMake(0, vectorDY)
             
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), CGRectGetHeight(context.containerView().frame)+0.6),
-                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), CGRectGetHeight(context.containerView().frame)+0.6))
+                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView()!.frame), CGRectGetHeight(context.containerView()!.frame)+0.6),
+                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView()!.frame), CGRectGetHeight(context.containerView()!.frame)+0.6))
             } else {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)/2),
-                                                                          toPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)))
+                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView()!.frame)/2),
+                                                                          toPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView()!.frame)))
             }
             
         } else {
             showHostTitleLabel(true, animated: true)
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView().frame)/2),
-                                                                          toPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView().frame)))
+                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView()!.frame)/2),
+                                                                          toPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView()!.frame)))
             } else {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView().frame)/2, -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight),
-                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight))
+                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView()!.frame)/2, -CGRectGetWidth(context.containerView()!.frame)+statusbarHeight+navigationBarHeight),
+                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView()!.frame), -CGRectGetWidth(context.containerView()!.frame)+statusbarHeight+navigationBarHeight))
             }
         }
         animator.addBehavior(self.attachmentBehaviour)
@@ -120,7 +123,7 @@ class GuillotineTransitionAnimation: NSObject {
         
         itemBehaviour = UIDynamicItemBehavior(items: [view])
         itemBehaviour.elasticity = menuElasticity
-        itemBehaviour.resistance = 0.5
+        itemBehaviour.resistance = 0.3
         animator.addBehavior(self.itemBehaviour)
         itemBehaviour.addItem(view)
         
@@ -171,14 +174,14 @@ extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func transitionDuration(context: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(context: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
 }
 
 extension GuillotineTransitionAnimation: UICollisionBehaviorDelegate {
-    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying, atPoint p: CGPoint) {
-        println("collided")
+    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, atPoint p: CGPoint) {
+        print("collided")
         if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
                 animationDelegate.menuDidCollideWithBoundary?()
         }
@@ -190,16 +193,19 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
         if self.mode == .Presentation {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
-            menu.view.frame = animationContext.containerView().bounds
+            menu.view.frame = animationContext.containerView()!.bounds
             menu.view.superview!.addScaleToFitView(menu.view, insets: UIEdgeInsetsZero)
             anchorPoint = CGPointZero
             menu.endAppearanceTransition()
-            println("finished")
+            print("finished")
             if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
                 animationDelegate.menuDidFinishPresentation?()
             }
         } else {
+            let hostViewController = animationContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+            hostViewController.navigationController?.setNavigationBarHidden(false, animated: false)
             menu.view.removeFromSuperview()
+            print("finished")
             if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
                 animationDelegate.menuDidFinishDismissal?()
             }
@@ -208,6 +214,6 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
     }
     
     func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("started")
+        print("started")
     }
 }
