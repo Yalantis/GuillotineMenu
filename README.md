@@ -12,11 +12,7 @@ Also, read how it was done in our [blog](http://yalantis.com/blog/how-we-created
 
 
 ## Requirements
-iOS 8.0 Swift 1.2
-
-## Swift 2.0
-Currently we maintain a [branch](https://github.com/Yalantis/GuillotineMenu/tree/swift_2.0) to provide support for Swift 2.0.
-
+iOS 8.0 Swift 2.0
 
 ## Installation
 
@@ -28,44 +24,56 @@ Coming soon.
 You are welcome to see the sample of the project for fully operating sample in the Example folder.
 
 * Add the folder "GuillotineMenu" to your project.
+* Your view controller should be embedded in UINavigationViewController
+* Set our GuillotineMenuNavigationControllerDelegate to be a delegate for your UINavigationViewController
 * Create a view controller in the interface builder and set it's class to be GuillotineMenuViewController or it's subclass.
-* Set the connetion from your view controller to the GuillotineMenuViewController with GuillotineMenuSegue
-* Call destinationVC.setMenuButtonWithImage(<#UIImage>) in prepareForSegue method if it is GuillotineMenuSegue
-
-```swift
-@objc protocol GuillotineAnimationProtocol: NSObjectProtocol {
-   func navigationBarHeight() -> CGFloat
-   func anchorPoint() -> CGPoint
-   func hostTitle () -> NSString
-}
-```
+* Set the connetion from your view controller to the GuillotineMenuViewController with UIStoryboardSegue
 
 * You need to set the properties for the GuillotineMenuViewController as shown in the sample below: 
 
 ```swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
-   destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
-   destinationVC.hostTitleText = self.navigationItem.title
-   destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
-   destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
+    if segue.destinationViewController.isKindOfClass(GuillotineMenuViewController) {
+        let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
+        destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
+        destinationVC.hostTitleText = self.navigationItem.title
+        destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
+
+        // The image rotation will be done for you, just pass the image for the menu button.
+        destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
+        destinationVC.addChildViewController(menuVC)
+    }
+}
+```
+* You can use your own UIviewController subclass instead of GuillotineMenuViewController as soon as your class conforms the GuillotineAnimationProtocol
+
+```swift
+@objc protocol GuillotineAnimationProtocol: NSObjectProtocol {
+func navigationBarHeight() -> CGFloat
+func anchorPoint() -> CGPoint
+func hostTitle () -> NSString
 }
 ```
 
-* The image rotation will be done for you, just pass the image for the menu button.
+### Usage
+
+All you need to do is just to push the GuillotineMenuViewController (or your controller which conforms GuillotineAnimationProtocol) and it will appear with "guillotine" animation. To hide menu you can call GuillotineMenuViewController's method closeMenu() or popViewControllerAnimated(true) for UINavigationController
+
+To know when animation is complete just override the viewWillAppear(animated) method in your view controllers. It will get called right after Guillotine animation complete.
 
 ### Customisation
 
-You are welcome to set any background color for the GuillotineMenuViewController's view but it is recommended to use the same color you use for the navigation bar.
+You are welcome to use anything in the view controller you pass as a ChildViewController to GuillotineMenuViewController. It's UIView will be shown and animated properly as a subview of GuillotineMenuViewController. It is recommended to use the same color you use for the navigation bar.
 Also the menu bar button is recommended to be set the way it is set in the sample project.
-
-The menu look customization is limited with your imagination only. Feel free to give it any look you want in the interface builder or programmatically.
 
 ### Compatibility
 
 iOS 8
 
-#### Version: 1.0
+#### Version: 1.1
 
 ### License
 
