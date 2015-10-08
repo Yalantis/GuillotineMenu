@@ -23,5 +23,4 @@ class GuillotineMenuNavigationControllerDelegate: NSObject, UINavigationControll
             }
             return nil
     }
-    
 }

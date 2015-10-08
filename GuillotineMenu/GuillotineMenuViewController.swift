@@ -27,8 +27,10 @@ class GuillotineMenuViewController: UIViewController {
     private let hostNavigationBarHeightLandscape: CGFloat = 32
     private let hostNavigationBarHeightPortrait: CGFloat = 44
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let child = self.childViewControllers.first
+        view.addScaleToFitView(child?.view, insets: UIEdgeInsetsZero)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

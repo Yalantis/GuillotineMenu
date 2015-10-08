@@ -36,7 +36,6 @@ class ViewController: UIViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
-            
             destinationVC.addChildViewController(menuVC)
         } else
         {

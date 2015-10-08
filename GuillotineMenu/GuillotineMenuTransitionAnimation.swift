@@ -205,6 +205,7 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
             let hostViewController = animationContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
             hostViewController.navigationController?.setNavigationBarHidden(false, animated: false)
             menu.view.removeFromSuperview()
+            hostViewController.viewDidAppear(true) // for some reason it does not get called for host view controller on menu dismissed
             print("finished")
             if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
                 animationDelegate.menuDidFinishDismissal?()
