@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="958" y="1204"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="ZlZ-2M-K3G">
             <objects>
-                <viewController storyboardIdentifier="MyMenuVC" modalPresentationStyle="currentContext" id="fth-R5-ROZ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyMenuVC" modalPresentationStyle="currentContext" id="fth-R5-ROZ" customClass="MenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSI-dx-N1K"/>
                         <viewControllerLayoutGuide type="bottom" id="z09-MX-auK"/>
@@ -216,7 +216,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.17254901959999999" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.25490196078431371" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="qKF-z9-rVR" secondAttribute="centerY" id="BSU-YQ-eb8"/>
                             <constraint firstAttribute="centerX" secondItem="qKF-z9-rVR" secondAttribute="centerX" id="zc3-Uf-Zag"/>

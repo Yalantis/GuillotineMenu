@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D004B2F1BC6683B00B3E015 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2D1F8E8B1AD7D9B40049A439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */; };
 		2D1F8E8D1AD7D9B40049A439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8C1AD7D9B40049A439 /* ViewController.swift */; };
 		2D1F8E901AD7D9B40049A439 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8E1AD7D9B40049A439 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2D1F8E851AD7D9B40049A439 /* GuillotineMenuExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuillotineMenuExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F8E891AD7D9B40049A439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				2D725B221AD7DDDE00555AD3 /* Assets */,
 				2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */,
 				2D1F8E8C1AD7D9B40049A439 /* ViewController.swift */,
+				2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */,
 				2D1F8E8E1AD7D9B40049A439 /* Main.storyboard */,
 				2D1F8E911AD7D9B40049A439 /* Images.xcassets */,
 				2D1F8E881AD7D9B40049A439 /* Supporting Files */,
@@ -204,6 +207,7 @@
 				2D725B561AD7DEAC00555AD3 /* UIViewExtension.swift in Sources */,
 				2D1F8E8D1AD7D9B40049A439 /* ViewController.swift in Sources */,
 				2D725B551AD7DEAC00555AD3 /* GuillotineMenuViewController.swift in Sources */,
+				2D004B2F1BC6683B00B3E015 /* MenuViewController.swift in Sources */,
 				2DCDAE6E1BC5149F00421271 /* GuillotineMenuNavigationControllerDelegate.swift in Sources */,
 				2D725B541AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				2D1F8E8B1AD7D9B40049A439 /* AppDelegate.swift in Sources */,
