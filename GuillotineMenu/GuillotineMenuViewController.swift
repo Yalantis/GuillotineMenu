@@ -29,7 +29,7 @@ class GuillotineMenuViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        view.addAspectToFitView(contentViewController?.view, insets: UIEdgeInsetsZero)
+        view.addAddConstraintsToFitView(contentViewController?.view, insets: UIEdgeInsetsZero)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
