@@ -16,9 +16,9 @@ class GuillotineMenuNavigationControllerDelegate: NSObject, UINavigationControll
         fromViewController fromVC: UIViewController,
         toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
             
-            if toVC.conformsToProtocol(GuillotineAnimationProtocol) {
+            if toVC.conformsToProtocol(GuillotineAnimationProtocol) && operation == UINavigationControllerOperation.Push {
                 return GuillotineTransitionAnimation(GuillotineTransitionAnimation.Mode.Presentation)
-            } else if fromVC.conformsToProtocol(GuillotineAnimationProtocol) {
+            } else if fromVC.conformsToProtocol(GuillotineAnimationProtocol) && operation == UINavigationControllerOperation.Pop {
                 return GuillotineTransitionAnimation(GuillotineTransitionAnimation.Mode.Dismissal)
             }
             return nil

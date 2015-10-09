@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Your Menu View Controller vew must know the following data for the proper animatio
@@ -36,7 +40,7 @@ class ViewController: UIViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
-            destinationVC.addChildViewController(menuVC)
+            destinationVC.addContentViewController(menuVC)
         } else
         {
             let destinationVC = segue.destinationViewController 

@@ -63,9 +63,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uEd-bc-Eiv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5a2-dr-VCF"/>
+                            <constraint firstItem="uEd-bc-Eiv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6We-MF-4W2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uEd-bc-Eiv" secondAttribute="bottom" id="Lly-k4-5fN"/>
                             <constraint firstAttribute="trailing" secondItem="uEd-bc-Eiv" secondAttribute="trailing" id="TZm-Kc-fad"/>
-                            <constraint firstItem="uEd-bc-Eiv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xn8-5J-v4L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" id="HgO-3H-kmd">
@@ -85,7 +85,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="ixD-Qa-kYA" id="XZq-mp-Aay"/>
-                        <segue destination="ClV-we-nYF" kind="show" identifier="menuOptionSegueID" id="aO8-uH-vLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -109,25 +108,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJ0-9z-YXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1645" y="484"/>
-        </scene>
-        <!--Menu OptionVC-->
-        <scene sceneID="h2J-H9-zFV">
-            <objects>
-                <viewController id="ClV-we-nYF" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Fck-mz-5ZH"/>
-                        <viewControllerLayoutGuide type="bottom" id="uDY-Hx-IBH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="367-ze-80H">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.17254901959999999" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Menu OptionVC" id="WeX-Ag-bb7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cm-hs-7g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="958" y="1204"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="ZlZ-2M-K3G">

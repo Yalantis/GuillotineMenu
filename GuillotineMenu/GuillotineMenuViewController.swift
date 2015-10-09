@@ -8,11 +8,9 @@
 
 import UIKit
 
-protocol GuillotineMenuViewControllerDelegate: class {
-    func menuOptionTapped(menuOption: String)
-}
-
 class GuillotineMenuViewController: UIViewController {
+    
+    var contentViewController: UIViewController?
 
     var hostNavigationBarHeight: CGFloat!
     var hostTitleText: NSString!
@@ -20,7 +18,6 @@ class GuillotineMenuViewController: UIViewController {
     var menuButton: UIButton!
     var menuButtonLeadingConstraint: NSLayoutConstraint!
     var menuButtonTopConstraint: NSLayoutConstraint!
-    weak var delegate: GuillotineMenuViewControllerDelegate?
     
     private let menuButtonLandscapeLeadingConstant: CGFloat = 1
     private let menuButtonPortraitLeadingConstant: CGFloat = 7
@@ -28,9 +25,7 @@ class GuillotineMenuViewController: UIViewController {
     private let hostNavigationBarHeightPortrait: CGFloat = 44
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        let child = self.childViewControllers.first
-        view.addScaleToFitView(child?.view, insets: UIEdgeInsetsZero)
+        view.addAspectToFitView(contentViewController?.view, insets: UIEdgeInsetsZero)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -48,30 +43,38 @@ class GuillotineMenuViewController: UIViewController {
         }
     }
     
-    override func addChildViewController(childController: UIViewController) {
-        super.addChildViewController(childController);
-        childController.view.frame = view.bounds
-        self.view.insertSubview(childController.view, belowSubview: menuButton)
+    func addContentViewController(viewController: UIViewController) {
+        contentViewController = viewController;
+        viewController.view.frame = view.bounds
+        self.view.insertSubview(viewController.view, belowSubview: menuButton)
     }
     
 // MARK: Actions
-    func closeMenu() {
-        self.navigationController?.popViewControllerAnimated(true)
+    func closeMenuAnimated() {
+        self.closeMenu(true)
+    }
+    
+    func closeMenu(animated: Bool) {
+        if animated == false {
+            self.navigationController?.setNavigationBarHidden(false, animated: false);
+        }
+         self.navigationController?.popViewControllerAnimated(animated)
     }
     
     func setMenuButtonWithImage(image: UIImage) {
         let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         
-        if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
-        } else {
-            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
-        }
+//        if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
+//            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
+//        } else {
+//            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
+//        }
+        menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
         
         menuButton.setImage(image, forState: .Normal)
         menuButton.setImage(image, forState: .Highlighted)
         menuButton.imageView!.contentMode = .Center
-        menuButton.addTarget(self, action: Selector("closeMenu"), forControlEvents: .TouchUpInside)
+        menuButton.addTarget(self, action: Selector("closeMenuAnimated"), forControlEvents: .TouchUpInside)
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         menuButton.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
         self.view.addSubview(menuButton)

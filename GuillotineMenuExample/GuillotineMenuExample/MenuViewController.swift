@@ -18,6 +18,6 @@ class MenuViewController: UIViewController {
         
         // close GuillotineMenuViewController whis is the parent view controller now
         let guillotineViewController = self.parentViewController! as! GuillotineMenuViewController
-        guillotineViewController.closeMenu()
+        guillotineViewController.closeMenu(true)
     }
 }

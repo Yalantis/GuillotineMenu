@@ -76,6 +76,11 @@ class GuillotineTransitionAnimation: NSObject {
         
         animator.delegate = self
         context.containerView()!.insertSubview(hostViewController.view, belowSubview: menu.view)
+//        if let menuProt = menu as? protocol<GuillotineAnimationProtocol> {
+//            navigationBarHeight = menuProt.navigationBarHeight()
+//            statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+//        }
+//        context.containerView()!.addAspectToFitView(hostViewController.view, insets: UIEdgeInsetsMake(navigationBarHeight+statusbarHeight, 0, 0, 0))
         animateMenu(menu.view, context: context)
     }
     
@@ -194,7 +199,7 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
             menu.view.frame = animationContext.containerView()!.bounds
-            menu.view.superview!.addScaleToFitView(menu.view, insets: UIEdgeInsetsZero)
+            menu.view.superview!.addAspectToFitView(menu.view, insets: UIEdgeInsetsZero)
             anchorPoint = CGPointZero
             menu.endAppearanceTransition()
             print("finished")
@@ -205,7 +210,7 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
             let hostViewController = animationContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
             hostViewController.navigationController?.setNavigationBarHidden(false, animated: false)
             menu.view.removeFromSuperview()
-            hostViewController.viewDidAppear(true) // for some reason it does not get called for host view controller on menu dismissed
+            hostViewController.endAppearanceTransition() // for some reason it does not get called for host view controller on menu dismissed
             print("finished")
             if let animationDelegate = menu as? protocol<GuillotineAnimationDelegate> {
                 animationDelegate.menuDidFinishDismissal?()
