@@ -24,6 +24,10 @@ class GuillotineMenuViewController: UIViewController {
     private let hostNavigationBarHeightLandscape: CGFloat = 32
     private let hostNavigationBarHeightPortrait: CGFloat = 44
     
+    override func viewDidLoad() {
+        setMenuButton()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         view.addAspectToFitView(contentViewController?.view, insets: UIEdgeInsetsZero)
     }
@@ -49,6 +53,35 @@ class GuillotineMenuViewController: UIViewController {
         self.view.insertSubview(viewController.view, belowSubview: menuButton)
     }
     
+    private func setMenuButton() {
+        let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        let image = UIImage(named: "ic_menu")
+        menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
+        
+        menuButton.setImage(image, forState: .Normal)
+    //menuButton.setImage(image, forState: .Highlighted)
+        menuButton.imageView!.contentMode = .Center
+        menuButton.addTarget(self, action: Selector("closeMenuAnimated"), forControlEvents: .TouchUpInside)
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
+        self.view.addSubview(menuButton)
+        
+        if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
+            let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonLandscapeLeadingConstant, menuButtonPortraitLeadingConstant))
+            menuButtonLeadingConstraint = leading
+            menuButtonTopConstraint = top
+        } else {
+            let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight))
+            menuButtonLeadingConstraint = leading
+            menuButtonTopConstraint = top
+        }
+    }
+    
+    func setMenuButtonImage(image:UIImage, state: UIControlState) {
+        menuButton.setImage(image, forState: state)
+    }
+    
 // MARK: Actions
     func closeMenuAnimated() {
         self.closeMenu(true)
@@ -59,31 +92,6 @@ class GuillotineMenuViewController: UIViewController {
             self.navigationController?.setNavigationBarHidden(false, animated: false);
         }
          self.navigationController?.popViewControllerAnimated(animated)
-    }
-    
-    func setMenuButtonWithImage(image: UIImage) {
-        let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-
-        menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
-        
-        menuButton.setImage(image, forState: .Normal)
-        menuButton.setImage(image, forState: .Highlighted)
-        menuButton.imageView!.contentMode = .Center
-        menuButton.addTarget(self, action: Selector("closeMenuAnimated"), forControlEvents: .TouchUpInside)
-        menuButton.translatesAutoresizingMaskIntoConstraints = false
-        menuButton.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
-        self.view.addSubview(menuButton)
-        
-        if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-           let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonLandscapeLeadingConstant, menuButtonPortraitLeadingConstant))
-            menuButtonLeadingConstraint = leading
-            menuButtonTopConstraint = top
-        } else {
-            let (leading, top) = self.view.addConstraintsForMenuButton(menuButton, offset: UIOffsetMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight))
-            menuButtonLeadingConstraint = leading
-            menuButtonTopConstraint = top
-        }
-        
     }
 }
 
