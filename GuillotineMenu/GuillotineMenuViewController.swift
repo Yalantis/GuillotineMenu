@@ -60,7 +60,6 @@ class GuillotineMenuViewController: UIViewController {
         menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
         
         menuButton.setImage(image, forState: .Normal)
-    //menuButton.setImage(image, forState: .Highlighted)
         menuButton.imageView!.contentMode = .Center
         menuButton.addTarget(self, action: Selector("closeMenuAnimated"), forControlEvents: .TouchUpInside)
         menuButton.translatesAutoresizingMaskIntoConstraints = false

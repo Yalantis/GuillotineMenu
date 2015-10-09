@@ -81,11 +81,6 @@ class GuillotineTransitionAnimation: NSObject {
         
         animator.delegate = self
         context.containerView()!.insertSubview(hostViewController.view, belowSubview: menu.view)
-//        if let menuProt = menu as? protocol<GuillotineAnimationProtocol> {
-//            navigationBarHeight = menuProt.navigationBarHeight()
-//            statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-//        }
-//        context.containerView()!.addAspectToFitView(hostViewController.view, insets: UIEdgeInsetsMake(navigationBarHeight+statusbarHeight, 0, 0, 0))
         menu.beginAppearanceTransition(false, animated: true)
         hostViewController.beginAppearanceTransition(true, animated: true)
         animateMenu(menu.view, context: context)
