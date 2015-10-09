@@ -61,6 +61,11 @@ class GuillotineTransitionAnimation: NSObject {
         // Move view off screen to avoid blink at start
         menu.view.center = CGPointMake(0, CGRectGetHeight(menu.view.frame))
         menu.beginAppearanceTransition(true, animated: true)
+        
+        let hostViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        hostViewController.beginAppearanceTransition(false, animated: true)
+        
+        
         context.containerView()!.addSubview(menu.view)
         animateMenu(menu.view, context: context)
     }
@@ -81,6 +86,8 @@ class GuillotineTransitionAnimation: NSObject {
 //            statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
 //        }
 //        context.containerView()!.addAspectToFitView(hostViewController.view, insets: UIEdgeInsetsMake(navigationBarHeight+statusbarHeight, 0, 0, 0))
+        menu.beginAppearanceTransition(false, animated: true)
+        hostViewController.beginAppearanceTransition(true, animated: true)
         animateMenu(menu.view, context: context)
     }
     

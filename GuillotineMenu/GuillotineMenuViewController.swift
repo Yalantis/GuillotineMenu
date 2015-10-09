@@ -63,12 +63,7 @@ class GuillotineMenuViewController: UIViewController {
     
     func setMenuButtonWithImage(image: UIImage) {
         let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-//        if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-//            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
-//        } else {
-//            menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
-//        }
+
         menuButton = UIButton(frame: CGRectMake(menuButtonPortraitLeadingConstant, menuButtonPortraitLeadingConstant+statusbarHeight, 30.0, 30.0))
         
         menuButton.setImage(image, forState: .Normal)
