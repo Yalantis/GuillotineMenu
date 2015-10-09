@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     let reuseIdentifier = "ContentCell"
     private let cellHeight: CGFloat = 210
     private let cellSpacing: CGFloat = 20
-    var destinationTitle: String!
 
     @IBOutlet var barButton: UIButton!
 
@@ -39,12 +38,18 @@ class ViewController: UIViewController {
             destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
+            let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC") as! MenuViewController
+            
+            menuVC.closureBlock = { viewControllerTitle in
+                destinationVC.closeMenuAnimated()
+                self.performSegueWithIdentifier("MenuOptionVC", sender: viewControllerTitle)
+            }
+            
             destinationVC.addContentViewController(menuVC)
         } else
         {
             let destinationVC = segue.destinationViewController 
-            destinationVC.title = destinationTitle
+            destinationVC.title = sender as? String
         }
     }
 }

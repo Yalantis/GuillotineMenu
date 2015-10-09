@@ -85,11 +85,30 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="ixD-Qa-kYA" id="XZq-mp-Aay"/>
+                        <segue destination="nVg-cg-Oii" kind="show" identifier="MenuOptionVC" id="UVd-S0-erX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="484"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xSf-Ec-2hH">
+            <objects>
+                <viewController id="nVg-cg-Oii" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uht-nB-UXd"/>
+                        <viewControllerLayoutGuide type="bottom" id="TF0-xy-OdS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Hl-YT-e2f">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4t-hh-IRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="1245"/>
         </scene>
         <!--Guillotine Menu View Controller-->
         <scene sceneID="yOn-jb-noV">
@@ -232,6 +251,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jf6-ia-3sF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

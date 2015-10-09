@@ -9,15 +9,20 @@
 import Foundation
 import UIKit
 
+
+
 class MenuViewController: UIViewController {
+    
+    var titleString: String!
+    
+    typealias MenuClosureBlock = (String) -> Void
+    var closureBlock: MenuClosureBlock!
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    @IBAction func menuButtonTapped(sender: AnyObject) {
-        
-        // close GuillotineMenuViewController whis is the parent view controller now
-        let guillotineViewController = self.parentViewController! as! GuillotineMenuViewController
-        guillotineViewController.closeMenu(true)
+    @IBAction func menuButtonTapped(sender: UIButton) {
+        closureBlock?(sender.accessibilityLabel!)
     }
 }
