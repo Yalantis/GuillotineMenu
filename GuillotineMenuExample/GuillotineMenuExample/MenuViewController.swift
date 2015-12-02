@@ -11,18 +11,69 @@ import UIKit
 
 
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, GuillotineMenu {
+    //GuillotineMenu protocol
+    var dismissButton: UIButton!
+    var titleLabel: UILabel!
     
-    var titleString: String!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("viewDidLoad")
+        
+        dismissButton = UIButton(frame: CGRectZero)
+        dismissButton.setImage(UIImage(named: "ic_menu"), forState: .Normal)
+        dismissButton.addTarget(self, action: "dismissButtonTapped:", forControlEvents: .TouchUpInside)
+        
+        titleLabel = UILabel()
+        titleLabel.numberOfLines = 1;
+        titleLabel.text = "Activity"
+        titleLabel.font = UIFont.boldSystemFontOfSize(17)
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.sizeToFit()
+    }
     
-    typealias MenuClosureBlock = (String) -> Void
-    var closureBlock: MenuClosureBlock!
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        print("viewDidAppear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
+    }
+    
+    func dismissButtonTapped(sende: UIButton) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func menuButtonTapped(sender: UIButton) {
-        closureBlock?(sender.accessibilityLabel!)
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func closeMenu(sender: UIButton) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}
+
+extension MenuViewController: GuillotineAnimationDelegate {
+    func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation) {
+        print("menuDidFinishPresentation")
+    }
+    func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation) {
+        print("menuDidFinishDismissal")
+    }
+    
+    func animatorWillStartPresentation(animator: GuillotineTransitionAnimation) {
+        print("willStartPresentation")
+    }
+    
+    func animatorWillStartDismissal(animator: GuillotineTransitionAnimation) {
+        print("willStartDismissal")
     }
 }

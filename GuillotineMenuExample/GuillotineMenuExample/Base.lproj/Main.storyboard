@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Activity-->
@@ -19,6 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uEd-bc-Eiv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vw5-WX-7R6">
                                     <size key="itemSize" width="580" height="288"/>
@@ -36,10 +37,13 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="content_1@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gcb-gK-d8d">
                                                     <rect key="frame" x="0.0" y="0.0" width="580" height="288"/>
+                                                    <animations/>
                                                 </imageView>
                                             </subviews>
+                                            <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.23921568627450979" green="0.22745098039215686" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Gcb-gK-d8d" firstAttribute="leading" secondItem="URY-Jl-CHw" secondAttribute="leading" id="6Th-jK-oAi"/>
@@ -60,6 +64,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uEd-bc-Eiv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5a2-dr-VCF"/>
@@ -73,65 +78,29 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ixD-Qa-kYA">
                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="-18" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="ic_menuRotated.png">
+                                <animations/>
+                                <state key="normal" image="ic_menu.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="VRZ-IH-5ac" kind="show" id="FQI-Vk-PEX"/>
+                                    <action selector="showMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wvn-WU-Pme"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="ixD-Qa-kYA" id="XZq-mp-Aay"/>
-                        <segue destination="nVg-cg-Oii" kind="show" identifier="MenuOptionVC" id="UVd-S0-erX"/>
+                        <segue destination="fth-R5-ROZ" kind="show" identifier="showMenuSegue" id="4EK-2h-ucH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="484"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xSf-Ec-2hH">
-            <objects>
-                <viewController id="nVg-cg-Oii" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uht-nB-UXd"/>
-                        <viewControllerLayoutGuide type="bottom" id="TF0-xy-OdS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Hl-YT-e2f">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.25490196079999999" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M4t-hh-IRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="958" y="1245"/>
-        </scene>
-        <!--Guillotine Menu View Controller-->
-        <scene sceneID="yOn-jb-noV">
-            <objects>
-                <viewController id="VRZ-IH-5ac" customClass="GuillotineMenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4nK-Uy-yNt"/>
-                        <viewControllerLayoutGuide type="bottom" id="EAA-bW-ke1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EFf-hi-4AD">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YJ0-9z-YXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1645" y="484"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="ZlZ-2M-K3G">
             <objects>
-                <viewController storyboardIdentifier="MyMenuVC" modalPresentationStyle="currentContext" id="fth-R5-ROZ" customClass="MenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" modalPresentationStyle="currentContext" id="fth-R5-ROZ" customClass="MenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSI-dx-N1K"/>
                         <viewControllerLayoutGuide type="bottom" id="z09-MX-auK"/>
@@ -145,6 +114,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0N-Sn-nKz">
                                         <rect key="frame" x="54" y="202" width="200" height="40"/>
+                                        <animations/>
                                         <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FuH-Qu-DO6"/>
@@ -162,6 +132,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-jJ-Etz">
                                         <rect key="frame" x="50" y="8" width="200" height="40"/>
+                                        <animations/>
                                         <accessibility key="accessibilityConfiguration" label="PROFILE"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Tp-6J-c1Q"/>
@@ -179,6 +150,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RO-8m-4aQ">
                                         <rect key="frame" x="50" y="56" width="200" height="40"/>
+                                        <animations/>
                                         <accessibility key="accessibilityConfiguration" label="FEED"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Onz-LD-2il"/>
@@ -196,6 +168,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-iu-7LY">
                                         <rect key="frame" x="50" y="105" width="200" height="40"/>
+                                        <animations/>
                                         <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Duw-Rk-efz"/>
@@ -212,6 +185,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="i0N-Sn-nKz" firstAttribute="centerX" secondItem="YrH-iu-7LY" secondAttribute="centerX" constant="4" id="0WL-zK-0QM"/>
@@ -226,21 +200,32 @@
                                     <constraint firstAttribute="centerX" secondItem="nN6-jJ-Etz" secondAttribute="centerX" id="zEx-7e-yda"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wC-lq-kWH">
+                                <rect key="frame" x="271" y="440" width="59" height="34"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMenu:" destination="fth-R5-ROZ" eventType="touchUpInside" id="YEb-SJ-ciS"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.25490196078431371" green="0.24313725490196078" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="7wC-lq-kWH" firstAttribute="centerX" secondItem="GS8-gc-m11" secondAttribute="centerX" id="7Zq-jO-9SV"/>
                             <constraint firstAttribute="centerY" secondItem="qKF-z9-rVR" secondAttribute="centerY" id="BSU-YQ-eb8"/>
+                            <constraint firstItem="7wC-lq-kWH" firstAttribute="top" secondItem="qKF-z9-rVR" secondAttribute="bottom" constant="15" id="t6K-7t-8M4"/>
                             <constraint firstAttribute="centerX" secondItem="qKF-z9-rVR" secondAttribute="centerX" id="zc3-Uf-Zag"/>
                         </constraints>
                     </view>
-                    <keyCommands>
-                        <keyCommand/>
-                    </keyCommands>
                     <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eey-Au-nRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="484"/>
+            <point key="canvasLocation" x="1650" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrU-IG-XyS">
@@ -251,17 +236,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jf6-ia-3sF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="delegate" destination="fal-DR-ixc" id="Dvc-Nn-9up"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zsn-EG-dJv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4na-XP-9gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="fal-DR-ixc" customClass="GuillotineMenuNavigationControllerDelegate" customModule="GuillotineMenuExample" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="283" y="484"/>
         </scene>
@@ -270,7 +254,7 @@
         <image name="content_1@3x.png" width="750" height="432"/>
         <image name="ic_activity@3x.png" width="75" height="57"/>
         <image name="ic_feed@3x.png" width="63" height="66"/>
-        <image name="ic_menuRotated.png" width="10" height="14"/>
+        <image name="ic_menu.png" width="10" height="14"/>
         <image name="ic_profile@3x.png" width="51" height="72"/>
         <image name="ic_settings@3x.png" width="69" height="69"/>
     </resources>
