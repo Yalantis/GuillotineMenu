@@ -16,6 +16,27 @@ class ViewController: UIViewController {
     private lazy var presentationAnimator = GuillotineTransitionAnimation()
     
     @IBOutlet var barButton: UIButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("VC: viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("VC: viewDidAppear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("VC: viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("VC: viewDidDisappear")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +45,6 @@ class ViewController: UIViewController {
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     @IBAction func showMenuAction(sender: UIButton) {
         let menuVC = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController")
         menuVC!.modalPresentationStyle = .Custom

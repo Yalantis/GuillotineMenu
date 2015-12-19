@@ -75,6 +75,7 @@ class GuillotineTransitionAnimation: NSObject {
             updateChromeView()
             menu.view.addSubview(chromeView!)
         }
+        
         if menu is GuillotineMenu {
             if supportView != nil  && presentButton != nil {
                 let guillotineMenu = menu as! GuillotineMenu
@@ -84,7 +85,11 @@ class GuillotineTransitionAnimation: NSObject {
             }
         }
         
+        let fromVC = context.viewControllerForKey(UITransitionContextFromViewControllerKey)
+        fromVC?.beginAppearanceTransition(false, animated: true)
+        
         animationDelegate?.animatorWillStartPresentation?(self)
+        
         animateMenu(menu.view, context: context)
     }
     
@@ -99,8 +104,12 @@ class GuillotineTransitionAnimation: NSObject {
             updateChromeView()
             menu.view.addSubview(chromeView!)
         }
+        
+        let toVC = context.viewControllerForKey(UITransitionContextToViewControllerKey)
+        toVC?.beginAppearanceTransition(true, animated: true)
 
         animationDelegate?.animatorWillStartDismissal?(self)
+        
         animateMenu(menu.view, context: context)
     }
     
@@ -208,7 +217,7 @@ class GuillotineTransitionAnimation: NSObject {
         return degrees / 180.0 * CGFloat(M_PI)
     }
     
-    private func updateContainerMenuButton() {
+    @objc private func updateContainerMenuButton() {
         let rotationTransform: CATransform3D = menu.view.layer.presentationLayer()!.transform
         var angle: CGFloat = 0
         if (rotationTransform.m11 < 0.0) {
@@ -258,17 +267,26 @@ extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
 //MARK: UIDynamicAnimatorDelegate protocol implementation
 extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+        
         if self.mode == .Presentation {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
             menu.view.frame = animationContext.containerView()!.bounds
             anchorPoint = CGPointZero
-            animationDelegate?.animatorDidFinishPresentation?(self)
-        } else {
-            animationDelegate?.animatorDidFinishDismissal?(self)
         }
+
         chromeView?.removeFromSuperview()
         animationContext.completeTransition(true)
+        
+        if self.mode == .Presentation {
+            let fromVC = animationContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+            fromVC?.endAppearanceTransition()
+            animationDelegate?.animatorDidFinishPresentation?(self)
+        } else {
+            let toVC = animationContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+            toVC?.endAppearanceTransition()
+            animationDelegate?.animatorDidFinishDismissal?(self)
+        }
         //Stop displayLink
         displayLink.paused = true
     }

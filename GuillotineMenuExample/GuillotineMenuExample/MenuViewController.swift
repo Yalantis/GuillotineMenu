@@ -18,7 +18,6 @@ class MenuViewController: UIViewController, GuillotineMenu {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         
         dismissButton = UIButton(frame: CGRectZero)
         dismissButton.setImage(UIImage(named: "ic_menu"), forState: .Normal)
@@ -34,17 +33,22 @@ class MenuViewController: UIViewController, GuillotineMenu {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
+        print("Menu: viewWillAppear")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear")
+        print("Menu: viewDidAppear")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("viewWillDisappear")
+        print("Menu: viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("Menu: viewDidDisappear")
     }
     
     func dismissButtonTapped(sende: UIButton) {
