@@ -23,57 +23,66 @@ Coming soon.
 
 You are welcome to see the sample of the project for fully operating sample in the Example folder.
 
-* Add the folder "GuillotineMenu" to your project.
-* Your view controller should be embedded in UINavigationViewController
-* Set our GuillotineMenuNavigationControllerDelegate to be a delegate for your UINavigationViewController
-* Create a view controller in the interface builder and set it's class to be GuillotineMenuViewController or it's subclass.
-* Set the connetion from your view controller to the GuillotineMenuViewController with UIStoryboardSegue
-
-* You need to set the properties for the GuillotineMenuViewController as shown in the sample below: 
-
-```swift
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.destinationViewController.isKindOfClass(GuillotineMenuViewController) {
-        let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
-        destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
-        destinationVC.hostTitleText = self.navigationItem.title
-        destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
-
-        // The image rotation will be done for you, just pass the image for the menu button.
-        destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuVC = storyboard.instantiateViewControllerWithIdentifier("MyMenuVC")
-        destinationVC.addChildViewController(menuVC)
-    }
-}
-```
-* You can use your own UIviewController subclass instead of GuillotineMenuViewController as soon as your class conforms the GuillotineAnimationProtocol
-
-```swift
-@objc protocol GuillotineAnimationProtocol: NSObjectProtocol {
-func navigationBarHeight() -> CGFloat
-func anchorPoint() -> CGPoint
-func hostTitle () -> NSString
-}
-```
+* You must add "GuillotineMenuTransitionAnimation.swift" to your project, that's all.
 
 ### Usage
 
-All you need to do is just to push the GuillotineMenuViewController (or your controller which conforms GuillotineAnimationProtocol) and it will appear with "guillotine" animation. To hide menu you can call GuillotineMenuViewController's method closeMenu() or popViewControllerAnimated(true) for UINavigationController
+* Now, it's for you to decide, should or not your menu drop from top left corner of the screen or from your navigation bar, because if you want animation like in example, you must make your menu view controller confirm to "GuillotineMenu" protocol. When your confirm to this protocol, you must make a menu button and title, you don't need to make frame for them, because animator will make it itself.
+* In view controller, that will present your menu, you must make a property for "GuillotineMenuTransitionAnimator". It's necessary for proper animation when you show or dismiss menu.
+* When you present menu, you must ensure, that model presentation style set to Custom and menu's transition delegate set to view controller, that presents menu:
 
-To know when animation is complete just override the viewWillAppear(animated) method in your view controllers. It will get called right after Guillotine animation complete.
+```swift
+let menuViewController = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+menuViewController.modalPresentationStyle = .Custom
+menuViewController.transitioningDelegate = self
+```
+
+* Implement UIViewControllerTransitionDelegate methods in your presenting view controller:
+
+```swift
+extension ViewController: UIViewControllerTransitioningDelegate {
+
+func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+presentationAnimator.mode = .Presentation
+return presentationAnimator
+}
+
+func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+presentationAnimator.mode = .Dismissal
+return presentationAnimator
+}
+}
+```
+
+* At last, you can assign offset view, from where your menu will be dropped and button for it, and present your menu: 
+
+```swift
+presentationAnimator.supportView = self.navigationController?.navigationBar
+presentationAnimator.presentButton = sender
+self.presentViewController(menuVC, animated: true, completion: nil)
+```
 
 ### Customisation
 
-You are welcome to use anything in the view controller you pass as a ChildViewController to GuillotineMenuViewController. It's UIView will be shown and animated properly as a subview of GuillotineMenuViewController. It is recommended to use the same color you use for the navigation bar.
-Also the menu bar button is recommended to be set the way it is set in the sample project.
+Of course, you can assign different "supportView" or "presentButton" for menu, we think that's the best case would be behaviour like in Example project.
+Also, your have wonderful delegate methods of animator:
+
+```swift
+protocol GuillotineAnimationDelegate: NSObjectProtocol {
+
+optional func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation)
+optional func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation)
+optional func animatorWillStartPresentation(animator: GuillotineTransitionAnimation)
+optional func animatorWillStartDismissal(animator: GuillotineTransitionAnimation)
+}
+```
+Your can do whatever you want alongside menu is animating.
 
 ### Compatibility
 
 iOS 8
 
-#### Version: 1.1
+#### Version: 2.0
 
 ### License
 

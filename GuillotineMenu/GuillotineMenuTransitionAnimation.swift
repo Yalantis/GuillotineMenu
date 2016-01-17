@@ -8,12 +8,16 @@
 
 import UIKit
 
-@objc protocol GuillotineMenu: NSObjectProtocol {
+@objc
+protocol GuillotineMenu: NSObjectProtocol {
+	
     optional var dismissButton: UIButton! { get }
     optional var titleLabel: UILabel! { get }
 }
 
-@objc protocol GuillotineAnimationDelegate: NSObjectProtocol {
+@objc
+protocol GuillotineAnimationDelegate: NSObjectProtocol {
+	
     optional func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation)
     optional func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation)
     optional func animatorWillStartPresentation(animator: GuillotineTransitionAnimation)
@@ -21,17 +25,16 @@ import UIKit
 }
 
 class GuillotineTransitionAnimation: NSObject {
+	
     enum Mode { case Presentation, Dismissal }
     
-    //MARK: -
-    //MARK: Public properties
+    //MARK: - Public properties
     weak var animationDelegate: GuillotineAnimationDelegate?
     var mode: Mode = .Presentation
     var supportView: UIView?
     var presentButton: UIView?
     
-    //MARK: -
-    //MARK: Private properties
+    //MARK: - Private properties
     private var chromeView: UIView?
     private var containerMenuButton: UIButton? {
         didSet {
@@ -51,22 +54,19 @@ class GuillotineTransitionAnimation: NSObject {
     private var animator: UIDynamicAnimator!
     private let myContext = UnsafeMutablePointer<()>()
     
-    //MARK: -
-    //MARK: Deinitialization
+    //MARK: - Deinitialization
     deinit {
         displayLink.invalidate()
         presentButton?.removeObserver(self, forKeyPath: "frame")
     }
     
-    //MARK: -
-    //MARK: Initialization
+    //MARK: - Initialization
     override init() {
         super.init()
         setupDisplayLink()
     }
     
-    //MARK: -
-    //MARK: Private methods
+    //MARK: - Private methods
     private func animatePresentation(context: UIViewControllerContextTransitioning) {
         menu = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
         context.containerView()!.addSubview(menu.view)
@@ -127,20 +127,20 @@ class GuillotineTransitionAnimation: NSObject {
             if supportView != nil {
                 showHostTitleLabel(false, animated: true)
             }
-            view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, (initialMenuRotationAngle / 180.0) * CGFloat(M_PI));
+            view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, degreesToRadians(initialMenuRotationAngle));
             view.frame = CGRectMake(0, -CGRectGetHeight(view.frame)+topOffset, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame))
             rotationDirection = CGVectorMake(0, vectorDY)
             
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-                fromX = CGRectGetWidth(context.containerView()!.frame)-1
-                fromY = CGRectGetHeight(context.containerView()!.frame)+1.5
-                toX = fromX+1
+                fromX = CGRectGetWidth(context.containerView()!.frame) - 1
+                fromY = CGRectGetHeight(context.containerView()!.frame) + 1.5
+                toX = fromX + 1
                 toY = fromY
             } else {
                 fromX = -1
-                fromY = CGRectGetHeight(context.containerView()!.frame)-1
+                fromY = CGRectGetHeight(context.containerView()!.frame) - 1
                 toX = fromX
-                toY = fromY+1
+                toY = fromY + 1
             }
         } else {
             if supportView != nil {
@@ -148,19 +148,19 @@ class GuillotineTransitionAnimation: NSObject {
             }
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
                 fromX = -1
-                fromY = -CGRectGetWidth(context.containerView()!.frame)+topOffset+1
+                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + 1
                 toX = fromX
-                toY = fromY-1
+                toY = fromY - 1
             } else {
-                fromX = CGRectGetHeight(context.containerView()!.frame)-1
-                fromY = -CGRectGetWidth(context.containerView()!.frame)+topOffset-1
-                toX = fromX+1
+                fromX = CGRectGetHeight(context.containerView()!.frame) - 1
+                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset - 1
+                toX = fromX + 1
                 toY = fromY
             }
         }
         
-        let anchorPoint = CGPointMake(topOffset/2, topOffset/2)
-        let viewOffset = UIOffsetMake(-view.bounds.size.width/2+anchorPoint.x, -view.bounds.size.height/2+anchorPoint.y)
+        let anchorPoint = CGPointMake(topOffset / 2, topOffset / 2)
+        let viewOffset = UIOffsetMake(-view.bounds.size.width / 2 + anchorPoint.x, -view.bounds.size.height / 2 + anchorPoint.y)
         let attachmentBehaviour = UIAttachmentBehavior(item: view, offsetFromCenter: viewOffset, attachedToAnchor: anchorPoint)
         animator.addBehavior(attachmentBehaviour)
 
@@ -184,7 +184,7 @@ class GuillotineTransitionAnimation: NSObject {
         if let guillotineMenu = menu as? GuillotineMenu {
             guard guillotineMenu.titleLabel != nil else { return }
             guillotineMenu.titleLabel!.center = CGPointMake(CGRectGetHeight(supportView!.frame) / 2, CGRectGetWidth(supportView!.frame) / 2)
-            guillotineMenu.titleLabel!.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
+            guillotineMenu.titleLabel!.transform = CGAffineTransformMakeRotation(degreesToRadians(90));
             menu.view.addSubview(guillotineMenu.titleLabel!)
             if mode == .Presentation {
                 guillotineMenu.titleLabel!.alpha = 1;
@@ -193,7 +193,7 @@ class GuillotineTransitionAnimation: NSObject {
             }
             
             if animated {
-                UIView.animateWithDuration(duration, animations: { () -> Void in
+                UIView.animateWithDuration(duration, animations: {
                     guillotineMenu.titleLabel!.alpha = CGFloat(show)
                     }, completion: nil)
             } else {
@@ -216,14 +216,19 @@ class GuillotineTransitionAnimation: NSObject {
     private func degreesToRadians(degrees: CGFloat) -> CGFloat {
         return degrees / 180.0 * CGFloat(M_PI)
     }
-    
-    @objc private func updateContainerMenuButton() {
+	
+		private func radiansToDegrees(radians: CGFloat) -> CGFloat {
+			return radians * 180.0 / CGFloat(M_PI)
+		}
+	
+    @objc
+		private func updateContainerMenuButton() {
         let rotationTransform: CATransform3D = menu.view.layer.presentationLayer()!.transform
         var angle: CGFloat = 0
         if (rotationTransform.m11 < 0.0) {
-            angle = 180.0 - (asin(rotationTransform.m12) * 180.0 / CGFloat(M_PI))
+            angle = 180.0 - radiansToDegrees(asin(rotationTransform.m12))
         } else {
-            angle = asin(rotationTransform.m12) * 180.0 / CGFloat(M_PI)
+            angle = radiansToDegrees(asin(rotationTransform.m12))
         }
         let degrees: CGFloat = 90 - abs(angle)
         containerMenuButton?.layer.transform = CATransform3DRotate(CATransform3DIdentity, degreesToRadians(degrees), 0, 0, 1)
@@ -235,8 +240,7 @@ class GuillotineTransitionAnimation: NSObject {
         containerMenuButton?.frame = senderRect
     }
     
-    //MARK: -
-    //MARK: Observer
+    //MARK: - Observer
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if context == myContext {
             setupContainerMenuButtonFrameAndTopOffset()
@@ -246,9 +250,9 @@ class GuillotineTransitionAnimation: NSObject {
     }
 }
 
-//MARK: -
-//MARK: UIViewControllerAnimatedTransitioning protocol implementation
+//MARK: - UIViewControllerAnimatedTransitioning protocol implementation
 extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
+	
     func animateTransition(context: UIViewControllerContextTransitioning) {
         switch mode {
         case .Presentation:
@@ -263,11 +267,10 @@ extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
     }
 }
 
-//MARK: -
-//MARK: UIDynamicAnimatorDelegate protocol implementation
+//MARK: - UIDynamicAnimatorDelegate protocol implementation
 extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
+	
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        
         if self.mode == .Presentation {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
@@ -289,9 +292,5 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
         }
         //Stop displayLink
         displayLink.paused = true
-    }
-    
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-
     }
 }

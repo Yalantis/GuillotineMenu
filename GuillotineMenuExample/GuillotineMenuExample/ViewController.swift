@@ -46,20 +46,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showMenuAction(sender: UIButton) {
-        let menuVC = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController")
-        menuVC!.modalPresentationStyle = .Custom
-        menuVC!.transitioningDelegate = self
+        let menuVC = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+        menuVC.modalPresentationStyle = .Custom
+        menuVC.transitioningDelegate = self
         if menuVC is GuillotineAnimationDelegate {
             presentationAnimator.animationDelegate = menuVC as? GuillotineAnimationDelegate
         }
         presentationAnimator.supportView = self.navigationController?.navigationBar
         presentationAnimator.presentButton = sender
-        self.presentViewController(menuVC!, animated: true, completion: nil)
+        self.presentViewController(menuVC, animated: true, completion: nil)
     }
-
 }
 
-// The follwing is just for the presentation. You can ignore it
+// The following is just for the presentation. You can ignore it
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,6 +78,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
+	
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         presentationAnimator.mode = .Presentation
         return presentationAnimator
