@@ -27,7 +27,7 @@ You are welcome to see the sample of the project for fully operating sample in t
 
 ### Usage
 
-* Now, it's for you to decide, should or not your menu drop from top left corner of the screen or from your navigation bar, because if you want animation like in example, you must make your menu view controller confirm to "GuillotineMenu" protocol. When your confirm to this protocol, you must make a menu button and title, you don't need to make frame for them, because animator will make it itself.
+* Now, it's for you to decide, should or not your menu drop from top left corner of the screen or from your navigation bar, because if you want animation like in example, you must make your menu view controller conform to "GuillotineMenu" protocol. When you conform to this protocol, you must make a menu button and title, you don't need to make frame for them, because animator will make it itself.
 * In view controller, that will present your menu, you must make a property for "GuillotineMenuTransitionAnimator". It's necessary for proper animation when you show or dismiss menu.
 * When you present menu, you must ensure, that model presentation style set to Custom and menu's transition delegate set to view controller, that presents menu:
 
