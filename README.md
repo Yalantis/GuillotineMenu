@@ -12,7 +12,7 @@ Also, read how it was done in our [blog](http://yalantis.com/blog/how-we-created
 
 
 ## Requirements
-iOS 8.0 Swift 2.0
+iOS 8.0 Swift 2.2
 
 ## Installation
 
@@ -27,7 +27,7 @@ You are welcome to see the sample of the project for fully operating sample in t
 
 ### Usage
 
-* Now, it's for you to decide, should or not your menu drop from top left corner of the screen or from your navigation bar, because if you want animation like in example, you must make your menu view controller conform to "GuillotineMenu" protocol. When you conform to this protocol, you must make a menu button and title, you don't need to make frame for them, because animator will make it itself.
+* Now, it's for you to decide, should or not your menu drop from top left corner of the screen or from your navigation bar, because if you want animation like in example, you must make your menu view controller confirm to "GuillotineMenu" protocol. When you confirm to this protocol, you must make a menu button and title, you don't need to make frame for them, because animator will make it itself.
 * In view controller, that will present your menu, you must make a property for "GuillotineMenuTransitionAnimator". It's necessary for proper animation when you show or dismiss menu.
 * When you present menu, you must ensure, that model presentation style set to Custom and menu's transition delegate set to view controller, that presents menu:
 
@@ -64,8 +64,8 @@ self.presentViewController(menuVC, animated: true, completion: nil)
 
 ### Customisation
 
-Of course, you can assign different "supportView" or "presentButton" for menu, we think that's the best case would be behaviour like in Example project.
-Also, your have wonderful delegate methods of animator:
+Of course, you can assign different "supportView" or "presentButton" for menu, but we think that's the best case would be behaviour like in Example project.
+Also, you have wonderful delegate methods of animator:
 
 ```swift
 protocol GuillotineAnimationDelegate: NSObjectProtocol {
@@ -76,19 +76,19 @@ optional func animatorWillStartPresentation(animator: GuillotineTransitionAnimat
 optional func animatorWillStartDismissal(animator: GuillotineTransitionAnimation)
 }
 ```
-Your can do whatever you want alongside menu is animating.
+You can do whatever you want alongside menu is animating.
 
 ### Compatibility
 
-iOS 8
+iOS 8, 9
 
-#### Version: 2.0
+#### Version: 2.0.0
 
 ### License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Yalantis
+Copyright (c) 2016 Yalantis
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
