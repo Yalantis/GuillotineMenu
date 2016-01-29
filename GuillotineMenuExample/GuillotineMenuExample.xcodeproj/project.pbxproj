@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D004B2F1BC6683B00B3E015 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */; };
 		2D1F8E8B1AD7D9B40049A439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */; };
 		2D1F8E8D1AD7D9B40049A439 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8C1AD7D9B40049A439 /* ViewController.swift */; };
 		2D1F8E901AD7D9B40049A439 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F8E8E1AD7D9B40049A439 /* Main.storyboard */; };
@@ -15,17 +16,15 @@
 		2D725B2C1AD7DDDE00555AD3 /* content_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B241AD7DDDE00555AD3 /* content_2@3x.png */; };
 		2D725B2D1AD7DDDE00555AD3 /* ic_activity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B251AD7DDDE00555AD3 /* ic_activity@3x.png */; };
 		2D725B2E1AD7DDDE00555AD3 /* ic_feed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B261AD7DDDE00555AD3 /* ic_feed@3x.png */; };
-		2D725B2F1AD7DDDE00555AD3 /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B271AD7DDDE00555AD3 /* ic_menu@3x.png */; };
 		2D725B301AD7DDDE00555AD3 /* ic_menuRotated@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B281AD7DDDE00555AD3 /* ic_menuRotated@3x.png */; };
 		2D725B311AD7DDDE00555AD3 /* ic_profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B291AD7DDDE00555AD3 /* ic_profile@3x.png */; };
 		2D725B321AD7DDDE00555AD3 /* ic_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D725B2A1AD7DDDE00555AD3 /* ic_settings@3x.png */; };
-		2D725B531AD7DEAC00555AD3 /* GuillotineMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D725B4F1AD7DEAC00555AD3 /* GuillotineMenuSegue.swift */; };
 		2D725B541AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D725B501AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift */; };
-		2D725B551AD7DEAC00555AD3 /* GuillotineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D725B511AD7DEAC00555AD3 /* GuillotineMenuViewController.swift */; };
-		2D725B561AD7DEAC00555AD3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D725B521AD7DEAC00555AD3 /* UIViewExtension.swift */; };
+		2DD3E2621BC803B900226F86 /* ic_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD3E2611BC803B900226F86 /* ic_menu@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2D1F8E851AD7D9B40049A439 /* GuillotineMenuExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuillotineMenuExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1F8E891AD7D9B40049A439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,14 +35,11 @@
 		2D725B241AD7DDDE00555AD3 /* content_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "content_2@3x.png"; sourceTree = "<group>"; };
 		2D725B251AD7DDDE00555AD3 /* ic_activity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_activity@3x.png"; sourceTree = "<group>"; };
 		2D725B261AD7DDDE00555AD3 /* ic_feed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_feed@3x.png"; sourceTree = "<group>"; };
-		2D725B271AD7DDDE00555AD3 /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@3x.png"; sourceTree = "<group>"; };
 		2D725B281AD7DDDE00555AD3 /* ic_menuRotated@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menuRotated@3x.png"; sourceTree = "<group>"; };
 		2D725B291AD7DDDE00555AD3 /* ic_profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_profile@3x.png"; sourceTree = "<group>"; };
 		2D725B2A1AD7DDDE00555AD3 /* ic_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_settings@3x.png"; sourceTree = "<group>"; };
-		2D725B4F1AD7DEAC00555AD3 /* GuillotineMenuSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuSegue.swift; sourceTree = "<group>"; };
 		2D725B501AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
-		2D725B511AD7DEAC00555AD3 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
-		2D725B521AD7DEAC00555AD3 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		2DD3E2611BC803B900226F86 /* ic_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +76,7 @@
 				2D725B221AD7DDDE00555AD3 /* Assets */,
 				2D1F8E8A1AD7D9B40049A439 /* AppDelegate.swift */,
 				2D1F8E8C1AD7D9B40049A439 /* ViewController.swift */,
+				2D004B2E1BC6683A00B3E015 /* MenuViewController.swift */,
 				2D1F8E8E1AD7D9B40049A439 /* Main.storyboard */,
 				2D1F8E911AD7D9B40049A439 /* Images.xcassets */,
 				2D1F8E881AD7D9B40049A439 /* Supporting Files */,
@@ -102,7 +99,6 @@
 				2D725B241AD7DDDE00555AD3 /* content_2@3x.png */,
 				2D725B251AD7DDDE00555AD3 /* ic_activity@3x.png */,
 				2D725B261AD7DDDE00555AD3 /* ic_feed@3x.png */,
-				2D725B271AD7DDDE00555AD3 /* ic_menu@3x.png */,
 				2D725B281AD7DDDE00555AD3 /* ic_menuRotated@3x.png */,
 				2D725B291AD7DDDE00555AD3 /* ic_profile@3x.png */,
 				2D725B2A1AD7DDDE00555AD3 /* ic_settings@3x.png */,
@@ -113,10 +109,8 @@
 		2D725B4E1AD7DEAC00555AD3 /* GuillotineMenu */ = {
 			isa = PBXGroup;
 			children = (
-				2D725B4F1AD7DEAC00555AD3 /* GuillotineMenuSegue.swift */,
+				2DD3E2611BC803B900226F86 /* ic_menu@3x.png */,
 				2D725B501AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift */,
-				2D725B511AD7DEAC00555AD3 /* GuillotineMenuViewController.swift */,
-				2D725B521AD7DEAC00555AD3 /* UIViewExtension.swift */,
 			);
 			name = GuillotineMenu;
 			path = ../../GuillotineMenu;
@@ -148,7 +142,9 @@
 		2D1F8E7D1AD7D9B40049A439 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Yalantis;
 				TargetAttributes = {
 					2D1F8E841AD7D9B40049A439 = {
@@ -183,12 +179,12 @@
 				2D725B2B1AD7DDDE00555AD3 /* content_1@3x.png in Resources */,
 				2D725B321AD7DDDE00555AD3 /* ic_settings@3x.png in Resources */,
 				2D725B2D1AD7DDDE00555AD3 /* ic_activity@3x.png in Resources */,
+				2DD3E2621BC803B900226F86 /* ic_menu@3x.png in Resources */,
 				2D725B2E1AD7DDDE00555AD3 /* ic_feed@3x.png in Resources */,
 				2D725B2C1AD7DDDE00555AD3 /* content_2@3x.png in Resources */,
 				2D725B311AD7DDDE00555AD3 /* ic_profile@3x.png in Resources */,
 				2D1F8E921AD7D9B40049A439 /* Images.xcassets in Resources */,
 				2D725B301AD7DDDE00555AD3 /* ic_menuRotated@3x.png in Resources */,
-				2D725B2F1AD7DDDE00555AD3 /* ic_menu@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,10 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D725B561AD7DEAC00555AD3 /* UIViewExtension.swift in Sources */,
-				2D725B531AD7DEAC00555AD3 /* GuillotineMenuSegue.swift in Sources */,
 				2D1F8E8D1AD7D9B40049A439 /* ViewController.swift in Sources */,
-				2D725B551AD7DEAC00555AD3 /* GuillotineMenuViewController.swift in Sources */,
+				2D004B2F1BC6683B00B3E015 /* MenuViewController.swift in Sources */,
 				2D725B541AD7DEAC00555AD3 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				2D1F8E8B1AD7D9B40049A439 /* AppDelegate.swift in Sources */,
 			);
@@ -243,6 +237,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -309,6 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuillotineMenuExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yalantis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -319,6 +315,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuillotineMenuExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yalantis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -13,8 +13,30 @@ class ViewController: UIViewController {
     let reuseIdentifier = "ContentCell"
     private let cellHeight: CGFloat = 210
     private let cellSpacing: CGFloat = 20
-
+    private lazy var presentationAnimator = GuillotineTransitionAnimation()
+    
     @IBOutlet var barButton: UIButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("VC: viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("VC: viewDidAppear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("VC: viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("VC: viewDidDisappear")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +44,21 @@ class ViewController: UIViewController {
         navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-// Your Menu View Controller vew must know the following data for the proper animatio
-        let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
-        destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
-        destinationVC.hostTitleText = self.navigationItem.title
-        destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
-        destinationVC.setMenuButtonWithImage(barButton.imageView!.image!)
+    
+    @IBAction func showMenuAction(sender: UIButton) {
+        let menuVC = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
+        menuVC.modalPresentationStyle = .Custom
+        menuVC.transitioningDelegate = self
+        if menuVC is GuillotineAnimationDelegate {
+            presentationAnimator.animationDelegate = menuVC as? GuillotineAnimationDelegate
+        }
+        presentationAnimator.supportView = self.navigationController?.navigationBar
+        presentationAnimator.presentButton = sender
+        self.presentViewController(menuVC, animated: true, completion: nil)
     }
 }
 
-// The follwing is just for the presentation. You can ignore it
-
+// The following is just for the presentation. You can ignore it
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,5 +75,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(CGRectGetWidth(collectionView.bounds) - cellSpacing, cellHeight)
     }
+}
 
+extension ViewController: UIViewControllerTransitioningDelegate {
+	
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .Presentation
+        return presentationAnimator
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .Dismissal
+        return presentationAnimator
+    }
 }

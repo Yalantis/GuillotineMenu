@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HV9-Uq-kvX">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Activity-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uEd-bc-Eiv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.1647058824" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vw5-WX-7R6">
                                     <size key="itemSize" width="580" height="288"/>
@@ -27,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContentCell" id="URY-Jl-CHw">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="10" y="10" width="580" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="288"/>
@@ -35,10 +37,13 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="content_1@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gcb-gK-d8d">
                                                     <rect key="frame" x="0.0" y="0.0" width="580" height="288"/>
+                                                    <animations/>
                                                 </imageView>
                                             </subviews>
+                                            <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.23921568627450979" green="0.22745098039215686" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Gcb-gK-d8d" firstAttribute="leading" secondItem="URY-Jl-CHw" secondAttribute="leading" id="6Th-jK-oAi"/>
@@ -59,41 +64,43 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uEd-bc-Eiv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5a2-dr-VCF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uEd-bc-Eiv" secondAttribute="bottom" id="Lly-k4-5fN"/>
                             <constraint firstAttribute="trailing" secondItem="uEd-bc-Eiv" secondAttribute="trailing" id="TZm-Kc-fad"/>
-                            <constraint firstItem="uEd-bc-Eiv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xn8-5J-v4L"/>
+                            <constraint firstItem="uEd-bc-Eiv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qDp-mo-bS6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" id="HgO-3H-kmd">
                         <barButtonItem key="leftBarButtonItem" id="CbN-f2-knl">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ixD-Qa-kYA">
-                                <rect key="frame" x="16" y="9" width="30" height="30"/>
+                                <rect key="frame" x="20" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="-18" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="ic_menuRotated@3x.png">
+                                <animations/>
+                                <state key="normal" image="ic_menu.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fth-R5-ROZ" kind="custom" customClass="GuillotineMenuSegue" customModule="GuillotineMenuExample" customModuleProvider="target" id="a9P-AC-kSo"/>
+                                    <action selector="showMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wvn-WU-Pme"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="ixD-Qa-kYA" id="XZq-mp-Aay"/>
+                        <segue destination="fth-R5-ROZ" kind="show" identifier="showMenuSegue" id="4EK-2h-ucH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="484"/>
+            <point key="canvasLocation" x="958" y="484"/>
         </scene>
-        <!--Guillotine Menu View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="ZlZ-2M-K3G">
             <objects>
-                <viewController id="fth-R5-ROZ" customClass="GuillotineMenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" modalPresentationStyle="currentContext" id="fth-R5-ROZ" customClass="MenuViewController" customModule="GuillotineMenuExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rSI-dx-N1K"/>
                         <viewControllerLayoutGuide type="bottom" id="z09-MX-auK"/>
@@ -107,6 +114,8 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0N-Sn-nKz">
                                         <rect key="frame" x="54" y="202" width="200" height="40"/>
+                                        <animations/>
+                                        <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FuH-Qu-DO6"/>
                                             <constraint firstAttribute="width" constant="200" id="Nd0-bY-aoZ"/>
@@ -117,9 +126,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="mn8-DL-0Ht"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-jJ-Etz">
                                         <rect key="frame" x="50" y="8" width="200" height="40"/>
+                                        <animations/>
+                                        <accessibility key="accessibilityConfiguration" label="PROFILE"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Tp-6J-c1Q"/>
                                             <constraint firstAttribute="width" constant="200" id="9B1-GD-Art"/>
@@ -130,9 +144,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="Uw3-Fb-YB1"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RO-8m-4aQ">
                                         <rect key="frame" x="50" y="56" width="200" height="40"/>
+                                        <animations/>
+                                        <accessibility key="accessibilityConfiguration" label="FEED"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Onz-LD-2il"/>
                                             <constraint firstAttribute="height" constant="40" id="WfZ-Gz-0Fw"/>
@@ -143,9 +162,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="u2i-Yo-Pnd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrH-iu-7LY">
                                         <rect key="frame" x="50" y="105" width="200" height="40"/>
+                                        <animations/>
+                                        <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Duw-Rk-efz"/>
                                             <constraint firstAttribute="height" constant="40" id="nCd-EY-9iu"/>
@@ -156,8 +180,12 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="fth-R5-ROZ" eventType="touchUpInside" id="GsK-58-JrZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="i0N-Sn-nKz" firstAttribute="centerX" secondItem="YrH-iu-7LY" secondAttribute="centerX" constant="4" id="0WL-zK-0QM"/>
@@ -172,10 +200,24 @@
                                     <constraint firstAttribute="centerX" secondItem="nN6-jJ-Etz" secondAttribute="centerX" id="zEx-7e-yda"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wC-lq-kWH">
+                                <rect key="frame" x="271" y="440" width="59" height="34"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMenu:" destination="fth-R5-ROZ" eventType="touchUpInside" id="YEb-SJ-ciS"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="7wC-lq-kWH" firstAttribute="centerX" secondItem="GS8-gc-m11" secondAttribute="centerX" id="7Zq-jO-9SV"/>
                             <constraint firstAttribute="centerY" secondItem="qKF-z9-rVR" secondAttribute="centerY" id="BSU-YQ-eb8"/>
+                            <constraint firstItem="7wC-lq-kWH" firstAttribute="top" secondItem="qKF-z9-rVR" secondAttribute="bottom" constant="15" id="t6K-7t-8M4"/>
                             <constraint firstAttribute="centerX" secondItem="qKF-z9-rVR" secondAttribute="centerX" id="zc3-Uf-Zag"/>
                         </constraints>
                     </view>
@@ -183,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eey-Au-nRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="484"/>
+            <point key="canvasLocation" x="1650" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrU-IG-XyS">
@@ -194,6 +236,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jf6-ia-3sF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -209,7 +254,7 @@
         <image name="content_1@3x.png" width="750" height="432"/>
         <image name="ic_activity@3x.png" width="75" height="57"/>
         <image name="ic_feed@3x.png" width="63" height="66"/>
-        <image name="ic_menuRotated@3x.png" width="30" height="44"/>
+        <image name="ic_menu.png" width="10" height="14"/>
         <image name="ic_profile@3x.png" width="51" height="72"/>
         <image name="ic_settings@3x.png" width="69" height="69"/>
     </resources>
