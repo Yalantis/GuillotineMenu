@@ -33,6 +33,7 @@ class GuillotineTransitionAnimation: NSObject {
     var mode: Mode = .Presentation
     var supportView: UIView?
     var presentButton: UIView?
+    var duration = 0.6
     
     //MARK: - Private properties
     private var chromeView: UIView?
@@ -42,9 +43,13 @@ class GuillotineTransitionAnimation: NSObject {
         }
     }
     private var displayLink: CADisplayLink!
-    private let duration = 0.6
+    private var fromYPresentationLandscapeAdjustment:CGFloat = 1.0
+    private var fromYDismissalLandscapeAdjustment:CGFloat = 1.0
+    private var toYDismissalLandscapeAdjustment:CGFloat = 1.0
+    private var fromYPresentationAdjustment:CGFloat = 1.0
+    private var fromYDismissalAdjustment:CGFloat = 1.0
+    private var toXPresentationLandscapeAdjustment:CGFloat = 1.0
     private let vectorDY: CGFloat = 1500
-    private let vectorDx: CGFloat = 0.0
     private let initialMenuRotationAngle: CGFloat = -90
     private let menuElasticity: CGFloat = 0.6
     private var topOffset: CGFloat = 0
@@ -64,6 +69,7 @@ class GuillotineTransitionAnimation: NSObject {
     override init() {
         super.init()
         setupDisplayLink()
+        setupSystemVersionAdjustment()
     }
     
     //MARK: - Private methods
@@ -132,13 +138,14 @@ class GuillotineTransitionAnimation: NSObject {
             rotationDirection = CGVectorMake(0, vectorDY)
             
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
+
                 fromX = CGRectGetWidth(context.containerView()!.frame) - 1
-                fromY = CGRectGetHeight(context.containerView()!.frame) + 1.5
-                toX = fromX + 1
+                fromY = CGRectGetHeight(context.containerView()!.frame) + fromYPresentationLandscapeAdjustment
+                toX = fromX + toXPresentationLandscapeAdjustment
                 toY = fromY
             } else {
                 fromX = -1
-                fromY = CGRectGetHeight(context.containerView()!.frame) - 1
+                fromY = CGRectGetHeight(context.containerView()!.frame) + fromYPresentationAdjustment
                 toX = fromX
                 toY = fromY + 1
             }
@@ -148,12 +155,12 @@ class GuillotineTransitionAnimation: NSObject {
             }
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
                 fromX = -1
-                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + 1
+                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + fromYDismissalLandscapeAdjustment
                 toX = fromX
-                toY = fromY - 1
+                toY = fromY + toYDismissalLandscapeAdjustment
             } else {
                 fromX = CGRectGetHeight(context.containerView()!.frame) - 1
-                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset - 1
+                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + fromYDismissalAdjustment
                 toX = fromX + 1
                 toY = fromY
             }
@@ -213,6 +220,27 @@ class GuillotineTransitionAnimation: NSObject {
         displayLink.paused = true
     }
     
+    private func setupSystemVersionAdjustment() {
+        let device = UIDevice.currentDevice()
+        let iosVersion = Double(device.systemVersion) ?? 0
+        let iOS9 = iosVersion >= 9
+        
+        if (iOS9) {
+            fromYPresentationLandscapeAdjustment = 1.5
+            fromYDismissalLandscapeAdjustment = 1.0
+            fromYPresentationAdjustment = -1.0
+            fromYDismissalAdjustment = -1.0
+            toXPresentationLandscapeAdjustment = 1.0
+            toYDismissalLandscapeAdjustment = -1.0
+        } else {
+            fromYPresentationLandscapeAdjustment = 0.5
+            fromYDismissalLandscapeAdjustment = 0.0
+            fromYPresentationAdjustment = -1.5
+            fromYDismissalAdjustment = 1.0
+            toXPresentationLandscapeAdjustment = -1.0
+            toYDismissalLandscapeAdjustment = 1.5
+        }
+    }
     private func degreesToRadians(degrees: CGFloat) -> CGFloat {
         return degrees / 180.0 * CGFloat(M_PI)
     }
