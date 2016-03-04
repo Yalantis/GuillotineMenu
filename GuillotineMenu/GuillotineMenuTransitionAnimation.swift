@@ -43,13 +43,13 @@ class GuillotineTransitionAnimation: NSObject {
         }
     }
     private var displayLink: CADisplayLink!
+    private var vectorDY: CGFloat = 1500
     private var fromYPresentationLandscapeAdjustment:CGFloat = 1.0
     private var fromYDismissalLandscapeAdjustment:CGFloat = 1.0
     private var toYDismissalLandscapeAdjustment:CGFloat = 1.0
     private var fromYPresentationAdjustment:CGFloat = 1.0
     private var fromYDismissalAdjustment:CGFloat = 1.0
     private var toXPresentationLandscapeAdjustment:CGFloat = 1.0
-    private let vectorDY: CGFloat = 1500
     private let initialMenuRotationAngle: CGFloat = -90
     private let menuElasticity: CGFloat = 0.6
     private var topOffset: CGFloat = 0
@@ -123,6 +123,7 @@ class GuillotineTransitionAnimation: NSObject {
         animationContext = context
         animator = UIDynamicAnimator(referenceView: context.containerView()!)
         animator.delegate = self
+        vectorDY = CGFloat(2/3.14 * (Double(UIScreen.mainScreen().bounds.size.height) / duration))
         
         var rotationDirection = CGVectorMake(0, -vectorDY)
         var fromX: CGFloat

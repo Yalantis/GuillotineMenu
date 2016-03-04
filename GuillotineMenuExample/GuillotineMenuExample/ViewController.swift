@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         }
         presentationAnimator.supportView = self.navigationController?.navigationBar
         presentationAnimator.presentButton = sender
-        presentationAnimator.duration = 0.5
+        presentationAnimator.duration = 0.6
         self.presentViewController(menuVC, animated: true, completion: nil)
     }
 }
