@@ -65,7 +65,8 @@ self.presentViewController(menuVC, animated: true, completion: nil)
 ### Customisation
 
 Of course, you can assign different "supportView" or "presentButton" for menu, but we think that's the best case would be behaviour like in Example project.
-To specify the length of an animation effect, change the value of the 'duration' property.
+
+To specify the length of an animation effect, change the value of the "duration" property.
 
 Also, you have wonderful delegate methods of animator:
 
