@@ -12,7 +12,7 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 
 
 ## Requirements
-iOS 8.0 Swift 2.2
+iOS 8.0
 
 ## Installation
 
