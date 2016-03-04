@@ -44,14 +44,15 @@ class GuillotineTransitionAnimation: NSObject {
     }
     private var displayLink: CADisplayLink!
     private var vectorDY: CGFloat = 1500
-    private var fromYPresentationLandscapeAdjustment:CGFloat = 1.0
-    private var fromYDismissalLandscapeAdjustment:CGFloat = 1.0
-    private var toYDismissalLandscapeAdjustment:CGFloat = 1.0
-    private var fromYPresentationAdjustment:CGFloat = 1.0
-    private var fromYDismissalAdjustment:CGFloat = 1.0
-    private var toXPresentationLandscapeAdjustment:CGFloat = 1.0
+    private var fromYPresentationLandscapeAdjustment: CGFloat = 1.0
+    private var fromYDismissalLandscapeAdjustment: CGFloat = 1.0
+    private var toYDismissalLandscapeAdjustment: CGFloat = 1.0
+    private var fromYPresentationAdjustment: CGFloat = 1.0
+    private var fromYDismissalAdjustment: CGFloat = 1.0
+    private var toXPresentationLandscapeAdjustment: CGFloat = 1.0
     private let initialMenuRotationAngle: CGFloat = -90
     private let menuElasticity: CGFloat = 0.6
+    private let vectorDYCoefficient: Double = 2 / M_PI
     private var topOffset: CGFloat = 0
     private var anchorPoint: CGPoint!
     private var menu: UIViewController!
@@ -123,13 +124,13 @@ class GuillotineTransitionAnimation: NSObject {
         animationContext = context
         animator = UIDynamicAnimator(referenceView: context.containerView()!)
         animator.delegate = self
-        vectorDY = CGFloat(2/3.14 * (Double(UIScreen.mainScreen().bounds.size.height) / duration))
+        vectorDY = CGFloat(vectorDYCoefficient * Double(UIScreen.mainScreen().bounds.size.height) / duration)
         
         var rotationDirection = CGVectorMake(0, -vectorDY)
         var fromX: CGFloat
-        var fromY:CGFloat
+        var fromY: CGFloat
         var toX: CGFloat
-        var toY:CGFloat
+        var toY: CGFloat
         if self.mode == .Presentation {
             if supportView != nil {
                 showHostTitleLabel(false, animated: true)
@@ -242,13 +243,14 @@ class GuillotineTransitionAnimation: NSObject {
             toYDismissalLandscapeAdjustment = 1.5
         }
     }
+    
     private func degreesToRadians(degrees: CGFloat) -> CGFloat {
         return degrees / 180.0 * CGFloat(M_PI)
     }
 	
-		private func radiansToDegrees(radians: CGFloat) -> CGFloat {
-			return radians * 180.0 / CGFloat(M_PI)
-		}
+    private func radiansToDegrees(radians: CGFloat) -> CGFloat {
+        return radians * 180.0 / CGFloat(M_PI)
+    }
 	
     @objc
 		private func updateContainerMenuButton() {
