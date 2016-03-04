@@ -12,7 +12,7 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 
 
 ## Requirements
-iOS 8.0 Swift 2.2
+iOS 8.0
 
 ## Installation
 
@@ -65,6 +65,9 @@ self.presentViewController(menuVC, animated: true, completion: nil)
 ### Customisation
 
 Of course, you can assign different "supportView" or "presentButton" for menu, but we think that's the best case would be behaviour like in Example project.
+
+To specify the length of an animation effect, change the value of the "duration" property.
+
 Also, you have wonderful delegate methods of animator:
 
 ```swift
@@ -82,7 +85,7 @@ You can do whatever you want alongside menu is animating.
 
 iOS 8, 9
 
-#### Version: 2.0.0
+#### Version: 2.0.1
 
 ### Let us know!
 
