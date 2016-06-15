@@ -17,7 +17,10 @@ iOS 8.0
 ## Installation
 
 ####[CocoaPods](http://cocoapods.org)
-Coming soon.
+
+```ruby
+pod 'GuillotineMenu', '~> 2.0.1'
+```
 
 ####Manual Installation
 
