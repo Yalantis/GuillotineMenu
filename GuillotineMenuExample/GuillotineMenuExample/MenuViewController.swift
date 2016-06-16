@@ -21,7 +21,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
         
         dismissButton = UIButton(frame: CGRectZero)
         dismissButton.setImage(UIImage(named: "ic_menu"), forState: .Normal)
-        dismissButton.addTarget(self, action: "dismissButtonTapped:", forControlEvents: .TouchUpInside)
+        dismissButton.addTarget(self, action: #selector(dismissButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
         titleLabel = UILabel()
         titleLabel.numberOfLines = 1;
