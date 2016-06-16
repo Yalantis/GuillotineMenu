@@ -1,10 +1,9 @@
+# GuillotineMenu.swift 
 
-# GuillotineMenu.swift
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
+![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
+
 ![Preview](https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif)
-
-Guillotine Menu
-
-Made in [![Yalantis](https://raw.githubusercontent.com/Yalantis/FoldingTabBar.iOS/master/Example/Example/Resources/Images/badge_orage_shadow.png)](https://yalantis.com/?utm_source=github)
 
 Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-Topbar-Animation)
 
@@ -19,7 +18,7 @@ iOS 8.0
 ####[CocoaPods](http://cocoapods.org)
 
 ```ruby
-pod 'GuillotineMenu', '~> 2.0.1'
+pod 'GuillotineMenu', '~> 2.0.2'
 ```
 
 ####Manual Installation

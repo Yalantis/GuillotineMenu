@@ -58,7 +58,7 @@ class GuillotineTransitionAnimation: NSObject {
     private var menu: UIViewController!
     private var animationContext: UIViewControllerContextTransitioning!
     private var animator: UIDynamicAnimator!
-    private let myContext = UnsafeMutablePointer<()>()
+    private let myContext: UnsafeMutablePointer<()> = nil
     
     //MARK: - Deinitialization
     deinit {
@@ -217,7 +217,7 @@ class GuillotineTransitionAnimation: NSObject {
     }
     
     private func setupDisplayLink() {
-        displayLink = CADisplayLink(target: self, selector: "updateContainerMenuButton")
+        displayLink = CADisplayLink(target: self, selector: #selector(updateContainerMenuButton))
         displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         displayLink.paused = true
     }
