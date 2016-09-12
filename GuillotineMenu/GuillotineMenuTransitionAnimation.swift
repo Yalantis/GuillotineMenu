@@ -9,14 +9,14 @@
 import UIKit
 
 @objc
-protocol GuillotineMenu: NSObjectProtocol {
+public protocol GuillotineMenu: NSObjectProtocol {
 	
     optional var dismissButton: UIButton! { get }
     optional var titleLabel: UILabel! { get }
 }
 
 @objc
-protocol GuillotineAnimationDelegate: NSObjectProtocol {
+public protocol GuillotineAnimationDelegate: NSObjectProtocol {
 	
     optional func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation)
     optional func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation)
@@ -24,16 +24,16 @@ protocol GuillotineAnimationDelegate: NSObjectProtocol {
     optional func animatorWillStartDismissal(animator: GuillotineTransitionAnimation)
 }
 
-class GuillotineTransitionAnimation: NSObject {
+public class GuillotineTransitionAnimation: NSObject {
 	
-    enum Mode { case Presentation, Dismissal }
+    public enum Mode { case Presentation, Dismissal }
     
     //MARK: - Public properties
-    weak var animationDelegate: GuillotineAnimationDelegate?
-    var mode: Mode = .Presentation
-    var supportView: UIView?
-    var presentButton: UIView?
-    var duration = 0.6
+    public weak var animationDelegate: GuillotineAnimationDelegate?
+    public var mode: Mode = .Presentation
+    public var supportView: UIView?
+    public var presentButton: UIView?
+    public var duration = 0.6
     
     //MARK: - Private properties
     private var chromeView: UIView?
@@ -67,7 +67,7 @@ class GuillotineTransitionAnimation: NSObject {
     }
     
     //MARK: - Initialization
-    override init() {
+    override public init() {
         super.init()
         setupDisplayLink()
         setupSystemVersionAdjustment()
@@ -270,9 +270,9 @@ class GuillotineTransitionAnimation: NSObject {
         let senderRect = supportView!.convertRect(presentButton!.frame, toView: nil)
         containerMenuButton?.frame = senderRect
     }
-    
+
     //MARK: - Observer
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if context == myContext {
             setupContainerMenuButtonFrameAndTopOffset()
         } else {
@@ -284,7 +284,7 @@ class GuillotineTransitionAnimation: NSObject {
 //MARK: - UIViewControllerAnimatedTransitioning protocol implementation
 extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
 	
-    func animateTransition(context: UIViewControllerContextTransitioning) {
+    public func animateTransition(context: UIViewControllerContextTransitioning) {
         switch mode {
         case .Presentation:
             animatePresentation(context)
@@ -293,7 +293,7 @@ extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func transitionDuration(context: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(context: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
 }
@@ -301,7 +301,7 @@ extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {
 //MARK: - UIDynamicAnimatorDelegate protocol implementation
 extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
 	
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+    public func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
         if self.mode == .Presentation {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
