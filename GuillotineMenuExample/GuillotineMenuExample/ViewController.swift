@@ -9,13 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    let reuseIdentifier = "ContentCell"
+    
     fileprivate let cellHeight: CGFloat = 210
     fileprivate let cellSpacing: CGFloat = 20
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     
-    @IBOutlet var barButton: UIButton!
+    @IBOutlet fileprivate var barButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +36,6 @@ class ViewController: UIViewController {
         print("VC: viewDidDisappear")
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let navBar = self.navigationController!.navigationBar
@@ -46,20 +44,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showMenuAction(_ sender: UIButton) {
-        let menuVC = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
-        menuVC.modalPresentationStyle = .custom
-        menuVC.transitioningDelegate = self
-        if menuVC is GuillotineAnimationDelegate {
-            presentationAnimator.animationDelegate = menuVC as? GuillotineAnimationDelegate
-        }
-        presentationAnimator.supportView = self.navigationController?.navigationBar
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+        menuViewController.modalPresentationStyle = .custom
+        menuViewController.transitioningDelegate = self
+        
+        presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
+        presentationAnimator.supportView = navigationController!.navigationBar
         presentationAnimator.presentButton = sender
-        presentationAnimator.duration = 0.6
-        self.present(menuVC, animated: true, completion: nil)
+        present(menuViewController, animated: true, completion: nil)
     }
 }
 
-// The following is just for the presentation. You can ignore it
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,13 +62,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AnyObject? = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        return cell as! UICollectionViewCell!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentCell", for: indexPath)
+        return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - cellSpacing, height: cellHeight)
     }
 }
