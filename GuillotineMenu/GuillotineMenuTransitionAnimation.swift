@@ -76,7 +76,7 @@ public class GuillotineTransitionAnimation: NSObject {
     //MARK: - Private methods
     private func animatePresentation(context: UIViewControllerContextTransitioning) {
         menu = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        context.containerView()!.addSubview(menu.view)
+        context.containerView().addSubview(menu.view)
         
         if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
             updateChromeView()
@@ -88,7 +88,7 @@ public class GuillotineTransitionAnimation: NSObject {
                 let guillotineMenu = menu as! GuillotineMenu
                 containerMenuButton = guillotineMenu.dismissButton
                 setupContainerMenuButtonFrameAndTopOffset()
-                context.containerView()!.addSubview(containerMenuButton!)
+                context.containerView().addSubview(containerMenuButton!)
             }
         }
         
@@ -104,8 +104,8 @@ public class GuillotineTransitionAnimation: NSObject {
         menu = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         if menu.navigationController != nil {
             let toVC = context.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            context.containerView()!.addSubview(toVC.view)
-            context.containerView()!.sendSubviewToBack(toVC.view)
+            context.containerView().addSubview(toVC.view)
+            context.containerView().sendSubviewToBack(toVC.view)
         }
         if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
             updateChromeView()
@@ -122,7 +122,7 @@ public class GuillotineTransitionAnimation: NSObject {
     
     private func animateMenu(view: UIView, context:UIViewControllerContextTransitioning) {
         animationContext = context
-        animator = UIDynamicAnimator(referenceView: context.containerView()!)
+        animator = UIDynamicAnimator(referenceView: context.containerView())
         animator.delegate = self
         vectorDY = CGFloat(vectorDYCoefficient * Double(UIScreen.mainScreen().bounds.size.height) / duration)
         
@@ -141,13 +141,13 @@ public class GuillotineTransitionAnimation: NSObject {
             
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
 
-                fromX = CGRectGetWidth(context.containerView()!.frame) - 1
-                fromY = CGRectGetHeight(context.containerView()!.frame) + fromYPresentationLandscapeAdjustment
+                fromX = CGRectGetWidth(context.containerView().frame) - 1
+                fromY = CGRectGetHeight(context.containerView().frame) + fromYPresentationLandscapeAdjustment
                 toX = fromX + toXPresentationLandscapeAdjustment
                 toY = fromY
             } else {
                 fromX = -1
-                fromY = CGRectGetHeight(context.containerView()!.frame) + fromYPresentationAdjustment
+                fromY = CGRectGetHeight(context.containerView().frame) + fromYPresentationAdjustment
                 toX = fromX
                 toY = fromY + 1
             }
@@ -157,12 +157,12 @@ public class GuillotineTransitionAnimation: NSObject {
             }
             if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
                 fromX = -1
-                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + fromYDismissalLandscapeAdjustment
+                fromY = -CGRectGetWidth(context.containerView().frame) + topOffset + fromYDismissalLandscapeAdjustment
                 toX = fromX
                 toY = fromY + toYDismissalLandscapeAdjustment
             } else {
-                fromX = CGRectGetHeight(context.containerView()!.frame) - 1
-                fromY = -CGRectGetWidth(context.containerView()!.frame) + topOffset + fromYDismissalAdjustment
+                fromX = CGRectGetHeight(context.containerView().frame) - 1
+                fromY = -CGRectGetWidth(context.containerView().frame) + topOffset + fromYDismissalAdjustment
                 toX = fromX + 1
                 toY = fromY
             }
@@ -305,7 +305,7 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
         if self.mode == .Presentation {
             self.animator.removeAllBehaviors()
             menu.view.transform = CGAffineTransformIdentity
-            menu.view.frame = animationContext.containerView()!.bounds
+            menu.view.frame = animationContext.containerView().bounds
             anchorPoint = CGPointZero
         }
 
