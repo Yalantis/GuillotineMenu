@@ -1,7 +1,6 @@
 # GuillotineMenu.swift 
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
-![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
 
 ![Preview](https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif)
 
@@ -11,14 +10,17 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 
 
 ## Requirements
-iOS 8.0
+
+- iOS 8.0+
+- Xcode 8
+- Swift 3
 
 ## Installation
 
 ####[CocoaPods](http://cocoapods.org)
 
 ```ruby
-pod 'GuillotineMenu', '~> 2.0'
+pod 'GuillotineMenu', '~> 3.0'
 ```
 
 ####Manual Installation
@@ -34,8 +36,8 @@ You are welcome to see the sample of the project for fully operating sample in t
 * When you present menu, you must ensure, that model presentation style set to Custom and menu's transition delegate set to view controller, that presents menu:
 
 ```swift
-let menuViewController = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
-menuViewController.modalPresentationStyle = .Custom
+let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+menuViewController.modalPresentationStyle = .custom
 menuViewController.transitioningDelegate = self
 ```
 
@@ -45,23 +47,22 @@ menuViewController.transitioningDelegate = self
 extension ViewController: UIViewControllerTransitioningDelegate {
 
 func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-presentationAnimator.mode = .Presentation
-return presentationAnimator
+	presentationAnimator.mode = .presentation
+	return presentationAnimator
 }
 
 func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-presentationAnimator.mode = .Dismissal
-return presentationAnimator
-}
+	presentationAnimator.mode = .dismissal
+	return presentationAnimator
 }
 ```
 
 * At last, you can assign offset view, from where your menu will be dropped and button for it, and present your menu: 
 
 ```swift
-presentationAnimator.supportView = self.navigationController?.navigationBar
+presentationAnimator.supportView = navigationController!.navigationBar
 presentationAnimator.presentButton = sender
-self.presentViewController(menuVC, animated: true, completion: nil)
+present(menuViewController, animated: true, completion: nil)
 ```
 
 ### Customisation
@@ -73,21 +74,15 @@ To specify the length of an animation effect, change the value of the "duration"
 Also, you have wonderful delegate methods of animator:
 
 ```swift
-protocol GuillotineAnimationDelegate: NSObjectProtocol {
-
-optional func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation)
-optional func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation)
-optional func animatorWillStartPresentation(animator: GuillotineTransitionAnimation)
-optional func animatorWillStartDismissal(animator: GuillotineTransitionAnimation)
+public protocol GuillotineAnimationDelegate: class {
+	
+    func animatorDidFinishPresentation(_ animator: GuillotineTransitionAnimation)
+    func animatorDidFinishDismissal(_ animator: GuillotineTransitionAnimation)
+    func animatorWillStartPresentation(_ animator: GuillotineTransitionAnimation)
+    func animatorWillStartDismissal(_ animator: GuillotineTransitionAnimation)
 }
 ```
 You can do whatever you want alongside menu is animating.
-
-### Compatibility
-
-iOS 8, 9
-
-#### Version: 2.0.1
 
 ### Let us know!
 
