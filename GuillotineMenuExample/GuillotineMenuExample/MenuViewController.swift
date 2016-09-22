@@ -19,65 +19,65 @@ class MenuViewController: UIViewController, GuillotineMenu {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dismissButton = UIButton(frame: CGRectZero)
-        dismissButton.setImage(UIImage(named: "ic_menu"), forState: .Normal)
-        dismissButton.addTarget(self, action: #selector(dismissButtonTapped(_:)), forControlEvents: .TouchUpInside)
+        dismissButton = UIButton(frame: CGRect.zero)
+        dismissButton.setImage(UIImage(named: "ic_menu"), for: UIControlState())
+        dismissButton.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         
         titleLabel = UILabel()
         titleLabel.numberOfLines = 1;
         titleLabel.text = "Activity"
-        titleLabel.font = UIFont.boldSystemFontOfSize(17)
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Menu: viewWillAppear")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("Menu: viewDidAppear")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("Menu: viewWillDisappear")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("Menu: viewDidDisappear")
     }
     
-    func dismissButtonTapped(sende: UIButton) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    func dismissButtonTapped(_ sende: UIButton) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func menuButtonTapped(sender: UIButton) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func menuButtonTapped(_ sender: UIButton) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func closeMenu(sender: UIButton) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeMenu(_ sender: UIButton) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension MenuViewController: GuillotineAnimationDelegate {
-    func animatorDidFinishPresentation(animator: GuillotineTransitionAnimation) {
+    func animatorDidFinishPresentation(_ animator: GuillotineTransitionAnimation) {
         print("menuDidFinishPresentation")
     }
-    func animatorDidFinishDismissal(animator: GuillotineTransitionAnimation) {
+    func animatorDidFinishDismissal(_ animator: GuillotineTransitionAnimation) {
         print("menuDidFinishDismissal")
     }
     
-    func animatorWillStartPresentation(animator: GuillotineTransitionAnimation) {
+    func animatorWillStartPresentation(_ animator: GuillotineTransitionAnimation) {
         print("willStartPresentation")
     }
     
-    func animatorWillStartDismissal(animator: GuillotineTransitionAnimation) {
+    func animatorWillStartDismissal(_ animator: GuillotineTransitionAnimation) {
         print("willStartDismissal")
     }
 }

@@ -11,28 +11,28 @@ import UIKit
 class ViewController: UIViewController {
 
     let reuseIdentifier = "ContentCell"
-    private let cellHeight: CGFloat = 210
-    private let cellSpacing: CGFloat = 20
-    private lazy var presentationAnimator = GuillotineTransitionAnimation()
+    fileprivate let cellHeight: CGFloat = 210
+    fileprivate let cellSpacing: CGFloat = 20
+    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     
     @IBOutlet var barButton: UIButton!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("VC: viewWillAppear")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("VC: viewDidAppear")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("VC: viewWillDisappear")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("VC: viewDidDisappear")
     }
@@ -42,12 +42,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let navBar = self.navigationController!.navigationBar
         navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-        navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
-    @IBAction func showMenuAction(sender: UIButton) {
-        let menuVC = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController")
-        menuVC.modalPresentationStyle = .Custom
+    @IBAction func showMenuAction(_ sender: UIButton) {
+        let menuVC = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+        menuVC.modalPresentationStyle = .custom
         menuVC.transitioningDelegate = self
         if menuVC is GuillotineAnimationDelegate {
             presentationAnimator.animationDelegate = menuVC as? GuillotineAnimationDelegate
@@ -55,38 +55,38 @@ class ViewController: UIViewController {
         presentationAnimator.supportView = self.navigationController?.navigationBar
         presentationAnimator.presentButton = sender
         presentationAnimator.duration = 0.6
-        self.presentViewController(menuVC, animated: true, completion: nil)
+        self.present(menuVC, animated: true, completion: nil)
     }
 }
 
 // The following is just for the presentation. You can ignore it
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: AnyObject? = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: AnyObject? = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         return cell as! UICollectionViewCell!
     }
 
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(CGRectGetWidth(collectionView.bounds) - cellSpacing, cellHeight)
+                        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width - cellSpacing, height: cellHeight)
     }
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
 	
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .Presentation
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .presentation
         return presentationAnimator
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .Dismissal
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .dismissal
         return presentationAnimator
     }
 }
