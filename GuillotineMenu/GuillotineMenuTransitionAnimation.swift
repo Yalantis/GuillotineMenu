@@ -186,7 +186,7 @@ fileprivate extension GuillotineTransitionAnimation {
         menu = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
         context.containerView.addSubview(menu.view)
         
-        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
             updateChromeView()
             menu.view.addSubview(chromeView!)
         }
@@ -215,7 +215,7 @@ fileprivate extension GuillotineTransitionAnimation {
             context.containerView.addSubview(toVC.view)
             context.containerView.sendSubview(toBack: toVC.view)
         }
-        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
             updateChromeView()
             menu.view.addSubview(chromeView!)
         }
@@ -245,7 +245,7 @@ fileprivate extension GuillotineTransitionAnimation {
             view.frame = CGRect(x: 0, y: -view.frame.height+topOffset, width: view.frame.width, height: view.frame.height)
             rotationDirection = CGVector(dx: 0, dy: vectorDY)
             
-            if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
                 fromX = context.containerView.frame.width - 1
                 fromY = context.containerView.frame.height + fromYPresentationLandscapeAdjustment
                 toX = fromX + toXPresentationLandscapeAdjustment
@@ -260,7 +260,7 @@ fileprivate extension GuillotineTransitionAnimation {
             if supportView != nil {
                 showHostTitleLabel(true, animated: true)
             }
-            if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
                 fromX = -1
                 fromY = -context.containerView.frame.width + topOffset + fromYDismissalLandscapeAdjustment
                 toX = fromX
