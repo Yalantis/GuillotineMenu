@@ -61,6 +61,7 @@ open class GuillotineTransitionAnimation: NSObject {
     fileprivate var toXPresentationLandscapeAdjustment: CGFloat = 1.0
     fileprivate let initialMenuRotationAngle: CGFloat = -90
     fileprivate let menuElasticity: CGFloat = 0.6
+    fileprivate let menuDensity: CGFloat = 1.5
     fileprivate let vectorDYCoefficient: Double = 2 / M_PI
     fileprivate var topOffset: CGFloat = 0
     fileprivate var anchorPoint: CGPoint!
@@ -287,6 +288,7 @@ fileprivate extension GuillotineTransitionAnimation {
         
         let itemBehaviour = UIDynamicItemBehavior(items: [view])
         itemBehaviour.elasticity = menuElasticity
+        itemBehaviour.density = menuDensity
         animator.addBehavior(itemBehaviour)
         
         let fallBehaviour = UIPushBehavior(items:[view], mode: .continuous)
