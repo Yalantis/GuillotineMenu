@@ -17,13 +17,13 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 
 ## Installation
 
-####[CocoaPods](http://cocoapods.org)
+#### [CocoaPods](http://cocoapods.org)
 
 ```ruby
 pod 'GuillotineMenu', '~> 3.0'
 ```
 
-####Manual Installation
+#### Manual Installation
 
 You are welcome to see the sample of the project for fully operating sample in the Example folder.
 
