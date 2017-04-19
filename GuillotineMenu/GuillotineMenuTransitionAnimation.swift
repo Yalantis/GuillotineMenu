@@ -61,8 +61,8 @@ open class GuillotineTransitionAnimation: NSObject {
     fileprivate var toXPresentationLandscapeAdjustment: CGFloat = 1.0
     fileprivate let initialMenuRotationAngle: CGFloat = -90
     fileprivate let menuElasticity: CGFloat = 0.6
+    fileprivate let vectorDYCoefficient: Double = 2 / Double.pi
     fileprivate let menuDensity: CGFloat = 1.5
-    fileprivate let vectorDYCoefficient: Double = 2 / M_PI
     fileprivate var topOffset: CGFloat = 0
     fileprivate var anchorPoint: CGPoint!
     fileprivate var menu: UIViewController!
@@ -345,9 +345,9 @@ extension GuillotineTransitionAnimation: UIDynamicAnimatorDelegate {
 }
 
 fileprivate func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
-    return degrees / 180.0 * CGFloat(M_PI)
+    return degrees / 180.0 * CGFloat(Double.pi)
 }
 
 fileprivate func radiansToDegrees(_ radians: CGFloat) -> CGFloat {
-    return radians * 180.0 / CGFloat(M_PI)
+    return radians * 180.0 / CGFloat(Double.pi)
 }
