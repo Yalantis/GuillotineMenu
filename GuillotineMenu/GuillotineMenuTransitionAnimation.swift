@@ -165,7 +165,8 @@ open class GuillotineTransitionAnimation: NSObject {
     
     func setupContainerMenuButtonFrameAndTopOffset() {
         topOffset = supportView!.frame.origin.y + supportView!.bounds.height
-        let senderRect = supportView!.convert(presentButton!.frame, to: nil)
+        let presentButtonFrame = presentButton!.convert(presentButton!.bounds, to: supportView!)
+        let senderRect = supportView!.convert(presentButtonFrame , to: nil)
         containerMenuButton?.frame = senderRect
     }
 
