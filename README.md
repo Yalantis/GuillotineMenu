@@ -20,7 +20,7 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 #### [CocoaPods](http://cocoapods.org)
 
 ```ruby
-pod 'GuillotineMenu', '~> 3.0'
+pod 'GuillotineMenu', '~> 3.0.2'
 ```
 
 #### Manual Installation

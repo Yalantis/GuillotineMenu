@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "GuillotineMenu"
-  spec.version = "3.0"
+  spec.version = "3.0.2"
 
   spec.homepage = "http://yalantis.com/blog/how-we-created-guillotine-menu-animation/"
   spec.summary = "Custom menu transition from Navigation Bar"
