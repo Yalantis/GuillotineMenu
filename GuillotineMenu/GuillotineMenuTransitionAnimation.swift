@@ -44,7 +44,7 @@ open class GuillotineTransitionAnimation: NSObject {
     open var animationDuration = 0.6
     
     //MARK: - Private properties
-    fileprivate var chromeView: UIView?
+    fileprivate var chromeView: UIView!
     fileprivate var containerMenuButton: UIButton? {
         didSet {
             presentButton?.addObserver(self, forKeyPath: "frame", options: .new, context: myContext)
@@ -88,8 +88,9 @@ open class GuillotineTransitionAnimation: NSObject {
     fileprivate func showHostTitleLabel(_ show: Bool, animated: Bool) {
         guard let guillotineMenu = menu as? GuillotineMenu else { return }
         guard let titleLabel = guillotineMenu.titleLabel else { return }
-        
-        titleLabel.center = CGPoint(x: supportView!.frame.height / 2, y: supportView!.frame.width / 2)
+        if let supportView = supportView {
+          titleLabel.center = CGPoint(x: supportView.frame.height / 2, y: supportView.frame.width / 2)
+        }
         titleLabel.transform = CGAffineTransform(rotationAngle: degreesToRadians(90))
         menu.view.addSubview(titleLabel)
         
@@ -164,10 +165,12 @@ open class GuillotineTransitionAnimation: NSObject {
     }
     
     func setupContainerMenuButtonFrameAndTopOffset() {
-        topOffset = supportView!.frame.origin.y + supportView!.bounds.height
-        let presentButtonFrame = presentButton!.convert(presentButton!.bounds, to: supportView!)
-        let senderRect = supportView!.convert(presentButtonFrame , to: nil)
-        containerMenuButton?.frame = senderRect
+        if let supportView = supportView, let presentButton = presentButton {
+          topOffset = supportView.frame.origin.y + supportView.bounds.height
+          let presentButtonFrame = presentButton.convert(presentButton.bounds, to: supportView)
+          let senderRect = supportView.convert(presentButtonFrame , to: nil)
+          containerMenuButton?.frame = senderRect
+        }
     }
 
     //MARK: - Observer
@@ -189,7 +192,7 @@ fileprivate extension GuillotineTransitionAnimation {
         
         if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
             updateChromeView()
-            menu.view.addSubview(chromeView!)
+            menu.view.addSubview(chromeView)
         }
         
         if menu is GuillotineMenu {
@@ -218,7 +221,7 @@ fileprivate extension GuillotineTransitionAnimation {
         }
         if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) || UIApplication.shared.statusBarOrientation == .landscapeLeft || UIApplication.shared.statusBarOrientation == .landscapeRight {
             updateChromeView()
-            menu.view.addSubview(chromeView!)
+            menu.view.addSubview(chromeView)
         }
         
         let toVC = context.viewController(forKey: UITransitionContextViewControllerKey.to)
