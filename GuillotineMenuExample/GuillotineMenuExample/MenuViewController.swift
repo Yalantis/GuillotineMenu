@@ -19,7 +19,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
         dismissButton = {
             let button = UIButton(frame: .zero)
             button.setImage(UIImage(named: "ic_menu"), for: .normal)
-            button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
             return button
         }()
         
@@ -54,7 +54,7 @@ class MenuViewController: UIViewController, GuillotineMenu {
         print("Menu: viewDidDisappear")
     }
     
-    func dismissButtonTapped(_ sender: UIButton) {
+    @objc func dismissButtonTapped(_ sender: UIButton) {
         presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
