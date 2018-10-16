@@ -49,7 +49,7 @@ class ViewController: UIViewController {
           blue: 79.0 / 255.0,
           alpha: 1
       )
-        navBar?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navBar?.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     @IBAction func showMenuAction(_ sender: UIButton) {
