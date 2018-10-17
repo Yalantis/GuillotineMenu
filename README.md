@@ -1,8 +1,8 @@
 # GuillotineMenu.swift 
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
+[![pod version](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
 
-![Preview](https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif)
+![Preview](https://github.com/Yalantis/GuillotineMenu/blob/master/example.gif)
 
 Inspired by [this project on Dribbble](https://dribbble.com/shots/2018249-Side-Topbar-Animation)
 
@@ -12,15 +12,15 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 ## Requirements
 
 - iOS 8.0+
-- Xcode 8
-- Swift 3
+- Xcode 10
+- Swift 4.2
 
 ## Installation
 
 #### [CocoaPods](http://cocoapods.org)
 
 ```ruby
-pod 'GuillotineMenu', '~> 3.0'
+pod 'GuillotineMenu'
 ```
 
 #### Manual Installation
@@ -95,7 +95,7 @@ P.S. We’re going to publish more awesomeness wrapped in code and a tutorial on
 
 	The MIT License (MIT)
 
-	Copyright © 2017 Yalantis
+	Copyright © 2018 Yalantis
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
