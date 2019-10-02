@@ -213,7 +213,7 @@ open class GuillotineTransitionAnimation: NSObject {
 // MARK: - Animation
 fileprivate extension GuillotineTransitionAnimation {
   
-  fileprivate func animatePresentation(using context: UIViewControllerContextTransitioning) {
+  func animatePresentation(using context: UIViewControllerContextTransitioning) {
     menu = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
     context.containerView.addSubview(menu.view)
     
@@ -239,7 +239,7 @@ fileprivate extension GuillotineTransitionAnimation {
     animateMenu(menu.view, context: context)
   }
   
-  fileprivate func animateDismissal(using context: UIViewControllerContextTransitioning) {
+  func animateDismissal(using context: UIViewControllerContextTransitioning) {
     menu = context.viewController(forKey: UITransitionContextViewControllerKey.from)!
     if menu.navigationController != nil {
       let toVC = context.viewController(forKey: UITransitionContextViewControllerKey.to)!
@@ -261,7 +261,7 @@ fileprivate extension GuillotineTransitionAnimation {
     animateMenu(menu.view, context: context)
   }
   
-  fileprivate func animateMenu(_ view: UIView, context:UIViewControllerContextTransitioning) {
+  func animateMenu(_ view: UIView, context:UIViewControllerContextTransitioning) {
     animationContext = context
     vectorDY = CGFloat(vectorDYCoefficient * Double(UIScreen.main.bounds.size.height) / animationDuration)
     
