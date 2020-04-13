@@ -1,6 +1,8 @@
 # GuillotineMenu.swift 
 
 [![pod version](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
+[![Platform](https://img.shields.io/cocoapods/p/GuillotineMenu.svg?style=flat)](https://github.com/Yalantis/GuillotineMenu)
+[![Yalantis](https://github.com/Yalantis/GuillotineMenu/blob/master/badge_dark.png)](https://yalantis.com/?utm_source=github)
 
 ![Preview](https://github.com/Yalantis/GuillotineMenu/blob/master/example.gif)
 
@@ -13,7 +15,8 @@ Also, read how it was done in our [blog](https://yalantis.com/blog/how-we-create
 
 - iOS 8.0+
 - Xcode 10
-- Swift 4.2
+- Swift 5.0 (v 4.1+)
+- Swift 4.2 (v 4.0)
 
 ## Installation
 
@@ -95,7 +98,7 @@ P.S. We’re going to publish more awesomeness wrapped in code and a tutorial on
 
 	The MIT License (MIT)
 
-	Copyright © 2018 Yalantis
+	Copyright © 2017 Yalantis
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -103,14 +106,15 @@ P.S. We’re going to publish more awesomeness wrapped in code and a tutorial on
 	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 	copies of the Software, and to permit persons to whom the Software is
 	furnished to do so, subject to the following conditions:
-	
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-	
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
