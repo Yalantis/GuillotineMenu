@@ -2,7 +2,7 @@
 
 [![pod version](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)](https://img.shields.io/cocoapods/v/GuillotineMenu.svg)
 [![Platform](https://img.shields.io/cocoapods/p/GuillotineMenu.svg?style=flat)](https://github.com/Yalantis/GuillotineMenu)
-[![Yalantis](https://github.com/Yalantis/GuillotineMenu/blob/develop/badge_dark.png)](https://yalantis.com/?utm_source=github)
+[![Yalantis](https://github.com/Yalantis/GuillotineMenu/blob/master/badge_dark.png)](https://yalantis.com/?utm_source=github)
 
 ![Preview](https://github.com/Yalantis/GuillotineMenu/blob/master/example.gif)
 
