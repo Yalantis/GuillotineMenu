@@ -9,6 +9,7 @@ Pod::Spec.new do |spec|
   spec.license = { :type => "MIT", :file => "LICENSE" }
   spec.social_media_url = "https://twitter.com/yalantis"
 
+  spec.swift_version = '5.0'
   spec.platform = :ios, '8.0'
   spec.ios.deployment_target = '8.0'
 
